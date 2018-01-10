@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+    font-family: Roboto, Calibri;
+    margin: 0px;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.padRow {
+    padding: 5px;
+}
+
+.absoluteCenter {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}

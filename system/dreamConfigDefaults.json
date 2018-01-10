@@ -1,0 +1,35 @@
+{
+    "Frontend": {
+        "Use": false,
+        "IP": "0.0.0.0",
+        "Port": 80,
+        "DevMode": false,
+        "REST": {
+            "Root": "",
+            "Options": {
+            },
+            "DefaultHeaders": {
+            },
+            "DefaultBody": {
+            },
+            "AuthentificationCookie": {
+                "Name": "none",
+                "HeaderName": ""
+            }
+        }
+    },
+    "Backend": {
+        "Use": false,
+        "IP": "0.0.0.0",
+        "Port": 81,
+        "DevMode": false
+    },
+    "SQL": {
+        "Use": false,
+        "IP": "",
+        "Port": 0,
+        "Username": "",
+        "Password": "",
+        "Database": ""
+    }
+}

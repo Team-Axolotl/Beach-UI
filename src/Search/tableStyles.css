@@ -1,0 +1,75 @@
+.tableContainer {
+    border: 1px rgba(0, 0, 0, 0.30) solid;
+    border-radius: 5px;
+    height: 80vh;
+    background: #e3e7ed;
+}
+
+.resultImage {
+    height: 200;
+    width: 200;
+}
+
+/*
+.searchTable {
+    table-layout: fixed;
+    border-collapse: separate !important;
+}
+
+.searchTableHeader {
+    border-bottom: 1px rgba(0, 0, 0, 0.20) solid;
+}
+
+.searchTableHeaderLabel {
+    border-right: 1px rgba(0, 0, 0, 0.20) solid;
+    text-align: center !important;
+}
+
+.searchTableHeaderLabel:last-child {
+    border-right: 0px;
+}
+
+/*
+
+.searchTableHeader {
+    height: 5%;
+    border-bottom: 1px rgba(0, 0, 0, 0.20) solid;
+}
+
+.searchTableHeaderLabel {
+
+
+    height: 100%;
+    align-items: center;
+    align-content: center;
+    display: flex;
+}
+
+
+
+
+
+.searchTable thead tr th {
+    text-align: center;
+    padding: 0px;
+    border-right: 1px rgba(0, 0, 0, 0.54) solid;
+    border-bottom: 1px rgba(0, 0, 0, 0.54) solid;
+}
+
+
+.imgPH {
+    width: 60px;
+    height: 60px;
+}
+
+.searchTable tbody {
+    width: 100%;
+}
+
+.searchTable tbody tr td {
+    text-align: center;
+    padding: 0px;
+    border-right: 1px rgba(0, 0, 0, 0.54) solid;
+    border-bottom: 1px rgba(0, 0, 0, 0.54) solid;
+}
+*/
