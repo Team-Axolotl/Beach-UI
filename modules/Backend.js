@@ -6,7 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 // Get config.
-const config = require('../system/config');
+const config = require('../system/configBuilder');
 
 // Setup.
 var server = express();

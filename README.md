@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/1h00rh0i7b2tvbu6?svg=true)](https://cryru.github.io/Dream/)
+[![Build status](https://ci.appveyor.com/api/projects/status/1h00rh0i7b2tvbu6?svg=true)](https://ci.appveyor.com/project/Cryru/dream)
 
 ### What is it?
 

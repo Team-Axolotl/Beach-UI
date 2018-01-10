@@ -11,6 +11,7 @@ body {
 
 .padRow {
     padding: 5px;
+    align-items: center;
 }
 
 .absoluteCenter {

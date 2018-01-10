@@ -37,8 +37,7 @@ module.exports = {
         modules: [
             path.resolve('./'),
             path.resolve('./node_modules'),
-            path.resolve('./src'),
-            path.resolve('./src/_dream')
+            path.resolve('./src')
         ]
     },
     module: {

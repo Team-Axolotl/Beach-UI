@@ -3,8 +3,8 @@ import XHR from 'xhr-promise';
 import { fromJS } from 'immutable';
 import { applyMiddleware, createStore } from 'redux';
 
-import { getCookie } from 'helpers.js';
-import dreamConfig from 'system/config.js';
+import { getCookie } from './helpers.js';
+import dreamConfig from 'system/configBuilder.js';
 import mainReducer from 'mainReducer.js';
 
 const requestSendingMiddleware = (store) => (next) => (action) => {

@@ -6,7 +6,7 @@ import { Grid } from 'material-ui';
 export default class Row extends React.PureComponent {
     render() {
         return (
-            <Grid container {...this.props}>
+            <Grid container {...this.props} spacing={this.props.spacing}>
                 {this.props.children}
             </Grid>
         );
@@ -14,5 +14,10 @@ export default class Row extends React.PureComponent {
 }
 
 Row.propTypes = {
-    children: PropTypes.node
+    children: PropTypes.node,
+    spacing: PropTypes.number
+};
+
+Row.defaultProps = {
+    spacing: 0
 };

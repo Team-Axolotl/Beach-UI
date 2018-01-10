@@ -3,7 +3,7 @@ const path = require('path');
 const express = require('express');
 
 // Get config.
-const config = require('../system/config');
+const config = require('../system/configBuilder');
 
 // Start frontend server.
 if (config.Frontend.DevMode) {

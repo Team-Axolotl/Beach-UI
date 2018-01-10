@@ -1,5 +1,5 @@
 // Get config.
-const config = require('../system/config');
+const config = require('../system/configBuilder');
 
 // Check if SQL is disabled.
 if (!config.SQL.Use) {
