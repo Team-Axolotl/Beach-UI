@@ -65,10 +65,10 @@ class LoginForm extends React.Component {
                     <Row className={style.padRow}>
                         <Col xs={12}>
                             <TextField autoFocus fullWidth error={!!this.state.loginError}
-                                label={this.state.loginError}
-                                onChange={(e) => this.setState({ username: e.target.value, passwordEnabled: false })}
-                                value={this.state.username}
-                                placeholder={'Username'} />
+                              label={this.state.loginError}
+                              onChange={(e) => this.setState({ username: e.target.value, passwordEnabled: false })}
+                              value={this.state.username}
+                              placeholder={'Username'} />
                         </Col>
                     </Row>
                     <Row className={style.padRow}>

@@ -12,7 +12,7 @@ module.exports = {
             DefaultBody: {
                 jsonrpc: '2.0',
                 id: '0'
-            },
+            }
         }
     }
 };
