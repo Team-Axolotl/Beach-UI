@@ -1,18 +1,18 @@
-module.exports = Object.assign({
-    'Frontend': {
-        'IP': '0.0.0.0',
-        'Port': 80,
-        'DevMode': true,
-        'REST': {
-            'Root': 'http://localhost:8003/',
-            'DefaultHeaders': {
+module.exports = {
+    Frontend: {
+        IP: '0.0.0.0',
+        Port: 88,
+        DevMode: true,
+        REST: {
+            Root: 'http://192.168.127.47:8003/',
+            DefaultHeaders: {
                 'Content-Type': 'application/json',
-                'accept': 'application/json'
+                accept: 'application/json'
             },
-            'DefaultBody': {
-                'jsonrpc': '2.0',
-                'id': '0'
-            }
+            DefaultBody: {
+                jsonrpc: '2.0',
+                id: '0'
+            },
         }
     }
-});
+};

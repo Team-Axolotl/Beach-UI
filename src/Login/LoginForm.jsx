@@ -39,6 +39,8 @@ class LoginForm extends React.Component {
             }
 
             if (a.state === 'finished') {
+                let cookie = a.response.getIn(['result', 'xsrf', 'uuId']);
+                document.cookie = 'xsrf-token=' + cookie;
                 this.context.router.history.push('/home');
             }
 

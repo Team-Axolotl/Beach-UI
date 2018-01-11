@@ -36,7 +36,8 @@ const requestSendingMiddleware = (store) => (next) => (action) => {
             method: action.requestType || 'POST',
             url: dreamConfig.Frontend.REST.Root + action.request,
             headers,
-            data: JSON.stringify(Object.assign({}, dreamConfig.Frontend.REST.DefaultBody, body))
+            data: JSON.stringify(Object.assign({}, dreamConfig.Frontend.REST.DefaultBody, body)),
+            withCredentials: true
         }));
 
         // Return the request promise.
