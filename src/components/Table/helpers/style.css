@@ -1,0 +1,38 @@
+
+.tableHeader {
+    font-size: 14px;
+    color: #595959;
+    font-weight: bold;
+    text-transform: none;
+}
+
+.tableGrid {
+    border: 1px solid #d7d6d6;
+}
+
+/* Row styling */
+.tableRowHeader {
+    background-color: #f9f9f9;
+    border-top: 1px solid #aaa;
+    border-right: 1px solid #aaa;
+    border-left: 1px solid #aaa;
+}
+
+.tableRow{
+    background: #fff;
+    border-bottom: 1px solid #d7d6d6;
+    -webkit-transition: background 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out;
+}
+
+.tableRow:nth-child(2n) {
+    background: #fdfdfd;
+}
+
+.tableRow:hover {
+    background: #f7f7f7;
+}
+
+.tableRowChecked:hover {
+    background: #f7f7f7;
+}
