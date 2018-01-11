@@ -1,40 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import Row from '_dream/containers/Row';
-import Col from '_dream/containers/Col';
-import LogoutButton from './LogoutButton';
 
-import { Logout } from 'User/actions';
+import style from 'style.css';
 
-class HomePage extends React.Component {
+export default class HomePage extends React.Component {
     render() {
         return (
-            <Row justify='center'>
-                <Col md={12}>
-                    <LogoutButton />
-                </Col>
+            <Row className={style.padRow} justify='center'>
+                {'Home page :P'}
             </Row>
         );
     }
 }
 
 HomePage.propTypes = {
-    Logout: PropTypes.func
+
 };
 
 HomePage.contextTypes = {
     router: PropTypes.object
 };
-
-export default connect(
-    (state, props) => {
-        return {
-
-        };
-    },
-    {
-        Logout
-    }
-)(HomePage);

@@ -35,8 +35,8 @@ class SearchTable extends React.Component {
                 {this.props.results.map((customer, index) => (
                     <Card key={index}>
                         <CardMedia
-                            className={style.resultImage}
-                            image={'http://localhost:8003/s/ut-document/repository/' + customer.get('fileName')}
+                          className={style.resultImage}
+                          image={'http://localhost:8003/s/ut-document/repository/' + customer.get('fileName')}
                         />
                         <Typography type='headline' component='h2'>
                             {customer.get('firstName') + ' ' + customer.get('lastName')}

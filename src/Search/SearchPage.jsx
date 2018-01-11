@@ -41,9 +41,9 @@ class SearchPage extends React.Component {
                             });
                         }}>
                             <SquareInput autoFocus fullWidth
-                                onChange={(e) => this.setState({ searchInput: e.target.value })}
-                                value={this.state.searchInput}
-                                placeholder={'Search'} />
+                              onChange={(e) => this.setState({ searchInput: e.target.value })}
+                              value={this.state.searchInput}
+                              placeholder={'Search'} />
                         </FormContainer>
                         {this.state.loading && <CircularProgress size={100} thickness={3} className={style.absoluteCenter} />}
                     </Col>

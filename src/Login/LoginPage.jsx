@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import logo from './logo.png';
+import logo from 'Resources/logo.png';
 
 import Row from '_dream/containers/Row';
 import Col from '_dream/containers/Col';

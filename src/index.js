@@ -16,6 +16,7 @@ import HomePage from './Home/HomePage';
 import SearchPage from './Search/SearchPage';
 
 import Authentificator from 'User/Authentificator';
+import NavigationBar from 'Global/NavigationBar';
 
 const theme = createMuiTheme({
     palette: {
@@ -31,9 +32,10 @@ ReactDOM.render(
             <BrowserRouter>
                 <Switch>
                     <Authentificator>
+                        <Route exact path='/login' component={LoginPage} />
+                        <NavigationBar />
                         <Route exact path='/' component={HomePage} />
                         <Route exact path='/home' component={HomePage} />
-                        <Route exact path='/login' component={LoginPage} />
                         <Route exact path='/search' component={SearchPage} />
                     </Authentificator>
                 </Switch>
