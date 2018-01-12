@@ -6,10 +6,11 @@ import Col from '_dream/containers/Col';
 
 import Delete from 'material-ui-icons/Delete';
 import StandardButton from '_standard/components/StandardButton';
+import StandardInput from '_standard/components/StandardInput';
 
 import style from 'style.css';
 
-const MicrocredCustomStyle = {
+const MicrocredCustomStyledButton = {
     root: {
         backgroundColor: '#E70276',
         borderRadius: 2,
@@ -27,6 +28,13 @@ const MicrocredCustomStyle = {
 };
 
 export default class StandardDemo extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            textValue: ''
+        };
+    }
     render() {
         return (
             <div>
@@ -122,20 +130,36 @@ export default class StandardDemo extends React.Component {
                 </Row>
                 <Row className={style.padRow} justify='center'>
                     <Col md={1}>
-                        <StandardButton type={'custom'} customStyle={MicrocredCustomStyle}>
+                        <StandardButton type={'custom'} customStyle={MicrocredCustomStyledButton}>
                             {'Clicky'}
                         </StandardButton>
                     </Col>
                     <Col md={1}>
-                        <StandardButton type={'custom'} customStyle={MicrocredCustomStyle} disabled>
+                        <StandardButton type={'custom'} customStyle={MicrocredCustomStyledButton} disabled>
                             {'No-Clicky'}
                         </StandardButton>
                     </Col>
                     <Col md={1}>
-                        <StandardButton type={'custom'} customStyle={MicrocredCustomStyle}>
+                        <StandardButton type={'custom'} customStyle={MicrocredCustomStyledButton}>
                             <Delete />
                             {'Delete'}
                         </StandardButton>
+                    </Col>
+                </Row>
+                <div style={{ marginTop: '100px' }} />
+                <Row className={style.padRow} justify='center'>
+                    <Col md={5}>
+                        <StandardInput value={this.state.textValue} onChange={(e) => this.setState({ textValue: e.target.value })} />
+                    </Col>
+                </Row>
+                <Row className={style.padRow} justify='center'>
+                    <Col md={5}>
+                        <StandardInput error={'Error! You did something wrong mate.'} />
+                    </Col>
+                </Row>
+                <Row className={style.padRow} justify='center'>
+                    <Col md={5}>
+                        <StandardInput readOnly value={'Reading only!'} />
                     </Col>
                 </Row>
             </div>

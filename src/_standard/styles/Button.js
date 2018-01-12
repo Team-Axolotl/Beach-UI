@@ -1,4 +1,4 @@
-const StyleBaseRoot = {
+const Base = {
     display: 'flex',
     justifyContent: 'center',
     verticalAlign: 'middle',
@@ -15,8 +15,8 @@ const StyleBaseRoot = {
     fontSize: '15px'
 };
 
-const ButtonStyleStandard = {
-    root: Object.assign({}, StyleBaseRoot, {
+const Default = {
+    root: Object.assign({}, Base, {
         color: '#444444',
         borderColor: '#cccccc',
         backgroundColor: '#f4f4f4',
@@ -39,8 +39,8 @@ const ButtonStyleStandard = {
     }
 };
 
-const ButtonStyleWhite = {
-    root: Object.assign({}, StyleBaseRoot, {
+const White = {
+    root: Object.assign({}, Base, {
         color: '#444444',
         borderColor: '#cccccc',
         backgroundColor: '#ffffff',
@@ -63,8 +63,8 @@ const ButtonStyleWhite = {
     }
 };
 
-const ButtonStyleBlue = {
-    root: Object.assign({}, StyleBaseRoot, {
+const Blue = {
+    root: Object.assign({}, Base, {
         border: 'none',
         color: '#ffffff',
         backgroundColor: '#4096fd',
@@ -84,8 +84,8 @@ const ButtonStyleBlue = {
     }
 };
 
-const ButtonStyleLabel = {
-    root: Object.assign({}, StyleBaseRoot, {
+const Label = {
+    root: Object.assign({}, Base, {
         border: 'none',
         color: 'black',
         background: 'none',
@@ -103,8 +103,8 @@ const ButtonStyleLabel = {
     }
 };
 
-const ButtonStyleLink = {
-    root: Object.assign({}, StyleBaseRoot, {
+const Link = {
+    root: Object.assign({}, Base, {
         border: 'none',
         color: '#2881ec',
         background: 'none',
@@ -122,4 +122,4 @@ const ButtonStyleLink = {
     }
 };
 
-export { ButtonStyleStandard, ButtonStyleWhite, ButtonStyleBlue, ButtonStyleLabel, ButtonStyleLink };
+export { Default, White, Blue, Label, Link };

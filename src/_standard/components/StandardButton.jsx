@@ -4,40 +4,46 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 
-import { ButtonStyleStandard, ButtonStyleWhite, ButtonStyleBlue, ButtonStyleLabel, ButtonStyleLink } from '_standard/styles/StandardStylesButton';
+import { Default, White, Blue, Label, Link } from '_standard/styles/Button';
 
 export default class StandardButton extends React.Component {
-    render() {
-        let { type, customStyle, ...other } = this.props;
+    constructor(props) {
+        super(props);
+
+        let { type, customStyle } = this.props;
 
         let typesSwitch = {
-            'default': ButtonStyleStandard,
-            'white': ButtonStyleWhite,
-            'blue': ButtonStyleBlue,
-            'label': ButtonStyleLabel,
-            'link': ButtonStyleLink,
+            'default': Default,
+            'white': White,
+            'blue': Blue,
+            'label': Label,
+            'link': Link,
             'custom': customStyle
         };
 
-        const StyledButton = withStyles(typesSwitch[type])(Button);
+        this.StyledButton = withStyles(typesSwitch[type])(Button);
+    }
+
+    render() {
+        let { type, customStyle, ...other } = this.props;
 
         return (
-            <StyledButton {...other}>
+            <this.StyledButton {...other}>
                 {this.props.children}
-            </StyledButton>
+            </this.StyledButton>
         );
     }
 }
 
 StandardButton.propTypes = {
-    disableRipple: PropTypes.bool.isRequired,
-    children: PropTypes.node.isRequired,
+    // The styling type.
     type: PropTypes.string.isRequired,
-    customStyle: PropTypes.object
-};
-
-StandardButton.contextTypes = {
-    router: PropTypes.object
+    // If the styling type is custom - the style as per material format.
+    customStyle: PropTypes.object,
+    // Whether to hide the default material ripple.
+    disableRipple: PropTypes.bool.isRequired,
+    // The nodes to display inside the button. Can be a collection, string, anything...
+    children: PropTypes.node.isRequired
 };
 
 StandardButton.defaultProps = {
