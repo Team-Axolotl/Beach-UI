@@ -14,16 +14,16 @@ import './style.css';
 import 'react-virtualized/styles.css';
 
 // Load page components.
-import LoginPage from './Login/LoginPage';
-import HomePage from './Home/HomePage';
-import SearchPage from './Search/SearchPage';
-import Beach from './Beach/';
-import LoginFormExample from './Beach/LoginFormExample/';
-import UserGrid from './pages/User/UserGrid';
-import StandardDemo from 'StandardDemo';
+import LoginPage from '_impl/pages/Login/LoginPage';
+import HomePage from '_impl/pages/Home/HomePage';
+import SearchPage from '_impl/pages/Search/SearchPage';
+import Beach from '_impl/pages/Beach';
+import LoginFormExample from '_impl/pages/Beach/LoginFormExample/';
+import UserGrid from '_impl/pages/User/UserGrid';
+import StandardDemo from '_impl/pages/StandardDemo';
 
-import Authentificator from 'User/Authentificator';
-import NavigationBar from 'Navigation/NavigationBar';
+import Authentificator from '_impl/components/Authentificator';
+import NavigationBar from '_impl/components/Navigation/NavigationBar';
 
 const theme = createMuiTheme({
     palette: {

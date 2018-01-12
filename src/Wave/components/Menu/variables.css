@@ -1,9 +1,0 @@
-:root {
-    --menuItemsContainerMaxHeight: 200px;
-    --menuItemsContainerBackgroundColor: #ffffff;
-    --menuItemsContainerBoxShadow: rgba(0, 0, 0, 0.12) 0px 1px 1px, rgba(0, 0, 0, 0.12) 0px 1px 1px;
-    --menuNoItemsMessageColor: rgba(0, 0, 0, 0.87);
-    --menuItemColor: rgba(0, 0, 0, 0.87);
-    --menuItemHoverColor: rgba(0, 0, 0, 0.1);
-    --menuItemSelectedColor: blue;
-}

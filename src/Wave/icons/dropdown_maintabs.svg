@@ -1,8 +1,0 @@
-<svg viewBox="0 0 16 16">
-<g>
-	<rect x="9.6" y="2.1" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 13.3498 16.6407)" width="1" height="7"/>
-	<rect x="5.4" y="2.1" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -2.2065 5.784)" width="1" height="7"/>
-	<rect x="9.6" y="6.9" transform="matrix(-0.7071 -0.7071 0.7071 -0.7071 9.8928 24.9867)" width="1" height="7"/>
-	<rect x="5.4" y="6.9" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -5.6635 7.216)" width="1" height="7"/>
-</g>
-</svg>

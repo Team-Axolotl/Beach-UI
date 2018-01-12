@@ -8,9 +8,9 @@ export default class ScreenCenterContainer extends React.PureComponent {
     render() {
         return (
             <Row justify='center' alignContent='center' alignItems='center'
-                direction='column' style={Object.assign({ height: '100vh', overflow: 'hidden' }, this.props.style)}
-                spacing={0}
-                className={this.props.className} {...this.props}>
+              direction='column' style={Object.assign({ height: '100vh', overflow: 'hidden' }, this.props.style)}
+              spacing={0}
+              className={this.props.className} {...this.props}>
                 <div style={{width: '100%'}}>{this.props.children}</div>
             </Row>
         );

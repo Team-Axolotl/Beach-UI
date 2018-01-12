@@ -1,1 +1,0 @@
-export const TAB_VIEW_HEIGHT = 45;
