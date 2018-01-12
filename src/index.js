@@ -9,11 +9,15 @@ import dreamStore from '_dream/dreamStore.js';
 // Load material ui setup.
 import { createMuiTheme, MuiThemeProvider } from 'material-ui/styles';
 import { pink, deepPurple, grey } from 'material-ui/colors';
+import 'normalize.css';
+import './style.css';
+import 'react-virtualized/styles.css';
 
 // Load page components.
 import LoginPage from './Login/LoginPage';
 import HomePage from './Home/HomePage';
 import SearchPage from './Search/SearchPage';
+import UserGrid from './pages/User/UserGrid';
 
 import Authentificator from 'User/Authentificator';
 import NavigationBar from 'Global/NavigationBar';
@@ -37,6 +41,7 @@ ReactDOM.render(
                         <Route exact path='/' component={HomePage} />
                         <Route exact path='/home' component={HomePage} />
                         <Route exact path='/search' component={SearchPage} />
+                        <Route exact path='/users' component={UserGrid} />
                     </Authentificator>
                 </Switch>
             </BrowserRouter>

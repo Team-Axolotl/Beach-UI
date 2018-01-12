@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+/** Reset box sizing*/
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
 body {
     font-family: Roboto, Calibri;
     margin: 0px;
