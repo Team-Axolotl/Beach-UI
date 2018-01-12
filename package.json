@@ -6,20 +6,23 @@
   "author": "Vlad 'Cryru' Abadzhiev",
   "license": "MIT",
   "dependencies": {
+    "express": "^4.16.2",
+    "immutable": "^3.8.2",
+    "mysql": "^2.15.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack-dev-server": "^2.10.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-stage-0": "^6.24.1",
-    "body-parser": "^1.18.2",
-    "css-loader": "^0.28.8",
-    "express": "^4.16.2",
+    "webpack-dev-middleware": "^2.0.4",
     "file-loader": "^1.1.6",
-    "html-webpack-plugin": "^2.30.1",
-    "immutable": "^3.8.2",
     "material-ui-icons": "^1.0.0-beta.17",
     "material-ui": "^1.0.0-beta.27",
-    "mysql": "^2.15.0",
-    "normalize.css": "^7.0.0",
-    "path": "^0.12.7",
-    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "16.2.0",
     "react-redux": "^5.0.6",
@@ -31,20 +34,17 @@
     "redux-thunk": "^2.2.0",
     "style-loader": "^0.19.1",
     "url-loader": "^0.6.2",
+    "html-webpack-plugin": "^2.30.1",
     "webpack": "^3.10.0",
-    "webpack-dev-middleware": "^2.0.3",
-    "xhr-promise": "^2.0.0"
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "webpack-dev-server": "^2.9.4"
+    "xhr-promise": "^2.0.0",
+    "body-parser": "^1.18.2",
+    "css-loader": "^0.28.8",
+    "normalize.css": "^7.0.0",
+    "prop-types": "^15.6.0"
   },
   "scripts": {
     "start": "node index.js",
-    "build": "webpack --config configs/webpackConfig.js"
+    "build": "webpack -p --config configs/webpackConfig.js"
   },
   "babel": {
     "presets": [

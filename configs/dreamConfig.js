@@ -2,7 +2,7 @@ module.exports = {
     Frontend: {
         IP: '0.0.0.0',
         Port: 88,
-        DevMode: true,
+        DevMode: false,
         REST: {
             Root: 'http://192.168.127.47:8003/',
             DefaultHeaders: {

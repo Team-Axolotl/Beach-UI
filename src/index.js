@@ -25,6 +25,7 @@ import StandardDemo from '_impl/pages/StandardDemo';
 // Yuzkan Demo Pages
 import YuzkanLogin from '_impl/pages/YuzkanDemo/Login';
 import YuzkanForm from '_impl/pages/YuzkanDemo/Form';
+import ThemeEngine from '_impl/pages/YuzkanDemo/ThemeEngine';
 
 import Authentificator from '_impl/components/Authentificator';
 import NavigationBar from '_impl/components/Navigation/NavigationBar';
@@ -47,8 +48,10 @@ ReactDOM.render(
                     <Route exact path='/loginExample' component={LoginFormExample} />
                     <Route exact path='/standard-demo' component={StandardDemo} />
                     <Route exact path='/login' component={LoginPage} />
-                    <Route exact path='/yuzkan-login' component={YuzkanLogin} />
-                    <Route exact path='/yuzkan-form' component={YuzkanForm} />
+                    <ThemeEngine>
+                        <Route exact path='/yuzkan-login' component={YuzkanLogin} />
+                        <Route exact path='/yuzkan-form' component={YuzkanForm} />
+                    </ThemeEngine>
                     <Authentificator>
                         {/* Routes without navigation bar */}
                         <NavigationBar />
