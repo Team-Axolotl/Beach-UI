@@ -18,7 +18,7 @@ const MicrocredCustomStyledButton = {
         height: 46,
         textTransform: 'uppercase',
         fontFamily: 'Roboto',
-        fontSize: '14px',
+        fontSize: '13px',
         color: '#FFF',
         fontWeight: '600',
         '&:hover': {
@@ -154,7 +154,7 @@ export default class StandardDemo extends React.Component {
                 </Row>
                 <Row className={style.padRow} justify='center'>
                     <Col md={5}>
-                        <StandardInput error={'Error! You did something wrong mate.'} />
+                        <StandardInput error label={'Error! You did something wrong mate.'} />
                     </Col>
                 </Row>
                 <Row className={style.padRow} justify='center'>

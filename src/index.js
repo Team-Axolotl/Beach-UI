@@ -22,6 +22,10 @@ import LoginFormExample from '_impl/pages/Beach/LoginFormExample/';
 import UserGrid from '_impl/pages/User/UserGrid';
 import StandardDemo from '_impl/pages/StandardDemo';
 
+// Yuzkan Demo Pages
+import YuzkanLogin from '_impl/pages/YuzkanDemo/Login';
+import YuzkanForm from '_impl/pages/YuzkanDemo/Form';
+
 import Authentificator from '_impl/components/Authentificator';
 import NavigationBar from '_impl/components/Navigation/NavigationBar';
 
@@ -43,6 +47,8 @@ ReactDOM.render(
                     <Route exact path='/loginExample' component={LoginFormExample} />
                     <Route exact path='/standard-demo' component={StandardDemo} />
                     <Route exact path='/login' component={LoginPage} />
+                    <Route exact path='/yuzkan-login' component={YuzkanLogin} />
+                    <Route exact path='/yuzkan-form' component={YuzkanForm} />
                     <Authentificator>
                         {/* Routes without navigation bar */}
                         <NavigationBar />

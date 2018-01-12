@@ -10,7 +10,7 @@ export default class StandardButton extends React.Component {
     constructor(props) {
         super(props);
 
-        let { type, customStyle } = this.props;
+        let { styleType, customStyle } = this.props;
 
         let typesSwitch = {
             'default': Default,
@@ -21,11 +21,11 @@ export default class StandardButton extends React.Component {
             'custom': customStyle
         };
 
-        this.StyledButton = withStyles(typesSwitch[type])(Button);
+        this.StyledButton = withStyles(typesSwitch[styleType])(Button);
     }
 
     render() {
-        let { type, customStyle, ...other } = this.props;
+        let { styleType, customStyle, ...other } = this.props;
 
         return (
             <this.StyledButton {...other}>
@@ -37,7 +37,7 @@ export default class StandardButton extends React.Component {
 
 StandardButton.propTypes = {
     // The styling type.
-    type: PropTypes.string.isRequired,
+    styleType: PropTypes.string.isRequired,
     // If the styling type is custom - the style as per material format.
     customStyle: PropTypes.object,
     // Whether to hide the default material ripple.
@@ -48,5 +48,5 @@ StandardButton.propTypes = {
 
 StandardButton.defaultProps = {
     disableRipple: true,
-    type: 'default'
+    styleType: 'default'
 };
