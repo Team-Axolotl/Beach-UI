@@ -20,9 +20,10 @@ import SearchPage from './Search/SearchPage';
 import Beach from './Beach/';
 import LoginFormExample from './Beach/LoginFormExample/';
 import UserGrid from './pages/User/UserGrid';
+import StandardDemo from 'StandardDemo';
 
 import Authentificator from 'User/Authentificator';
-import NavigationBar from 'Global/NavigationBar';
+import NavigationBar from 'Navigation/NavigationBar';
 
 const theme = createMuiTheme({
     palette: {
@@ -37,10 +38,13 @@ ReactDOM.render(
         <Provider store={dreamStore}>
             <BrowserRouter>
                 <Switch>
+                    {/* Routes without authentification */}
                     <Route exact path='/beach' component={Beach} />
                     <Route exact path='/loginExample' component={LoginFormExample} />
+                    <Route exact path='/standard-demo' component={StandardDemo} />
+                    <Route exact path='/login' component={LoginPage} />
                     <Authentificator>
-                        <Route exact path='/login' component={LoginPage} />
+                        {/* Routes without navigation bar */}
                         <NavigationBar />
                         <Route exact path='/' component={HomePage} />
                         <Route exact path='/home' component={HomePage} />
