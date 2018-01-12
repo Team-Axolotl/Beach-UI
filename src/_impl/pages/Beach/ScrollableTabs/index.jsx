@@ -4,18 +4,17 @@ import PropTypes from 'prop-types';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 
-import { createMuiTheme, MuiThemeProvider } from 'material-ui/styles';
-import indigo from 'material-ui/colors/indigo';
-import lime from 'material-ui/colors/lime';
+import { withStyles, createMuiTheme, MuiThemeProvider } from 'material-ui/styles';
+import blue from 'material-ui/colors/blue';
 import grey from 'material-ui/colors/grey';
 
 import GeneralInfo from './GeneralInfo/';
 
 const tabsTheme = createMuiTheme({
     palette: {
-        primary: indigo,
-        secondary: lime,
-        text: grey
+        primary: blue,
+        secondary: blue,
+        text: grey.contrastDefaultColor
     }
 });
 
@@ -36,22 +35,20 @@ export default class ScrollableTabs extends React.Component {
         <MuiThemeProvider theme={tabsTheme}>
             <AppBar position='static' color='default'>
                 <Tabs
-                  classes={classes}
-                  value={value}
-                  onChange={this.handleChange}
-                  indicatorColor='primary'
-                  textColor='primary'
-                  scrollable
-                  scrollButtons='auto'
-                  disableRipple
+                    classes={classes}
+                    value={value}
+                    onChange={this.handleChange}
+                    textColor='primary'
+                    scrollable
+                    scrollButtons="auto"
                 >
-                    <Tab disableRipple label='General info' />
-                    <Tab label='Contact info' />
-                    <Tab label='Assigned roles' />
-                    <Tab label='Credentials' />
-                    <Tab label='External credentials' />
-                    <Tab label='Business unit management' />
-                    <Tab label='Access policy' />
+                    <Tab disableRipple label="General info" />
+                    <Tab disableRipple label="Contact info" />
+                    <Tab disableRipple label="Assigned roles" />
+                    <Tab disableRipple label="Credentials" />
+                    <Tab disableRipple label="External credentials" />
+                    <Tab disableRipple label="Business unit management" />
+                    <Tab disableRipple label="Access policy" />
                 </Tabs>
             </AppBar>
             {value === 0 && <GeneralInfo />}
