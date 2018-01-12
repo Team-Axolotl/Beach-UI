@@ -1,0 +1,37 @@
+@import './variables.css';
+
+.ddTarget {
+    color: var(--dropdownTargetColor);
+    border: 1px solid var(--dropdownTargetBorderColor);
+    background-color: var(--dropdownTargetBackgroundColor);
+    min-width: 120px;
+    padding: 0 20px;
+    font-size: 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.ddArrow {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    padding: 9px;
+    cursor: pointer;
+    box-sizing: border-box;
+    margin-top: 1px;
+    margin-right: 1px;    
+    border: none;
+    background-color: var(--dropdownArrowBackgroundColor);
+}
+
+.ddArrow.readOnly {
+    cursor: default;
+    background-color: var(--dropdownArrowReadonlyBackgroundColor);
+}
+
+.ddArrow svg {
+    fill: var(--dropdownArrowSvgFill);
+}

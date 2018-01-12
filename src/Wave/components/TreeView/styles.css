@@ -1,0 +1,107 @@
+@import './variables.css';
+
+.treeNodeContainer {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.treeNode {
+    display: flex;
+    flex: 0 0 40px;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    transition: flex-basis 0.5s ease-in;
+}
+
+.treeNode:hover {
+    background-color: var(--treeViewHoverBgColor);
+}
+
+.treeNode:active {
+    background-color: var(--treeViewActiveBgColor);
+}
+
+.icon {
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    box-sizing: border-box;
+}
+
+.expandIcon {
+    composes: icon;
+    transform: rotate(-90deg);
+}
+
+.expandIcon.expanded {
+    transform: rotate(0);
+}
+
+.menuContainer {
+    composes: icon;
+    margin-left: auto;
+    margin-right: 0;
+    border: 1px solid;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.labelContainer {
+    display: flex;
+    flex: 1;
+    align-items: baseline;
+}
+
+.searchContainer {
+    margin-top: 20px;
+}
+
+.moveBtn {
+    margin-right: 0;
+    width: 20px;
+    height: 30px;
+}
+
+.moveBtn:last-child {
+    margin-right: 10px;
+}
+
+.moveBtn:first-child {
+    margin-left: 10px;
+}
+
+.btnIcon svg {
+    fill: var(--treeViewIconFill);
+    width: 10px;
+    height: 18px;
+}
+
+.btnIcon.moveUp svg {
+    transform: rotate(180deg);
+}
+
+.noData {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    color: var(--noDataLabelColor);
+    font-size: 14px;
+}
+
+.actionButtonsContainer {
+    margin-bottom: 10px;
+}
+
+.label {
+    font-size: 14px;
+    color: var(--labelColor);
+}
+
+.label.selected {
+    color: var(--labelSelectedColor);
+}
