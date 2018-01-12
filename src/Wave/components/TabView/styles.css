@@ -1,0 +1,33 @@
+@import './variables.css';
+
+.navigationContainer {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.tabContainer {
+    flex: 0 0 45px;
+    height: 45px;
+    background-color: var(--tabContainerBackgroundColor) ;
+}
+
+.inlinePillContainer {
+    background-color: var(--tabInlineContainerBackgroundColor);
+    height: 55px;
+    flex: 0 0 55px;
+}
+
+.closeIcon {
+    margin-left: 5px;
+    width: 10px;
+    height: 10px;
+}
+
+.closeIcon svg {
+    fill: var(--tabCloseIconFill);
+}
+
+.closeIcon:hover svg {
+    fill: var(--tabCloseIconHoverFill);
+}

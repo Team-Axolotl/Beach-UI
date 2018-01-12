@@ -17,6 +17,8 @@ import 'react-virtualized/styles.css';
 import LoginPage from './Login/LoginPage';
 import HomePage from './Home/HomePage';
 import SearchPage from './Search/SearchPage';
+import Beach from './Beach/';
+import LoginFormExample from './Beach/LoginFormExample/';
 import UserGrid from './pages/User/UserGrid';
 
 import Authentificator from 'User/Authentificator';
@@ -35,6 +37,8 @@ ReactDOM.render(
         <Provider store={dreamStore}>
             <BrowserRouter>
                 <Switch>
+                    <Route exact path='/beach' component={Beach} />
+                    <Route exact path='/loginExample' component={LoginFormExample} />
                     <Authentificator>
                         <Route exact path='/login' component={LoginPage} />
                         <NavigationBar />

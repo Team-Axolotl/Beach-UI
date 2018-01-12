@@ -1,0 +1,9 @@
+:root {
+    --modalColor: #FFFFFF;
+    --modalSectionColor: #F5F5F5;
+    --modalSectionBorderColor: #D7D6D6;
+    --modalHeaderFontColor: #595959;
+    --modalPopupBorderColor: #D7D6D6;
+    --modalCloseBtnColor: #8C8B8B;
+    --modalCloseBtnHoverColor: #666666;
+}

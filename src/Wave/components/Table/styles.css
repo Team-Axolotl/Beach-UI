@@ -1,0 +1,47 @@
+@import './variables.css';
+
+.header {
+    background-color: var(--headerBgColor);
+    color: var(--headerColor);
+    padding: 15px 10px;
+    border-bottom: 1px solid var(--tableBorderColor);
+    display: flex;
+    flex-direction: row;
+}
+
+.table {
+    border: 1px solid var(--tableBorderColor);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.body {
+    background-color: var(--bodyBgColor);
+    overflow: auto;
+    flex: 1;
+}
+
+.row {
+    padding: 15px 10px;
+    border-bottom: 1px solid var(--tableBorderColor);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.cell {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+    flex-basis: 0;
+    /*padding: 0.5em;*/
+    word-break: break-word;
+}
+
+.table .row:last-child {
+    border-bottom: none;
+}

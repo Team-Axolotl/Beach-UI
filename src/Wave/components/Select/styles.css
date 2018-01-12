@@ -1,0 +1,45 @@
+@import './variables.css';
+
+.wrapper {
+    display: flex;
+}
+
+.listViewWrapper {
+    display: flex;
+}
+
+.buttonGroupWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0 30px;
+}
+
+.squareButton {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    background: var(--selectButtonBackgroundColor)
+}
+
+.squareButton:last-child {
+    margin-bottom: 0;
+}
+
+.squareButton:hover {
+    background: var(--selectButtonBackgroundColorHover);
+    cursor: poiner;
+}
+
+.svgStyles svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--selectButtonSvgColor);
+}
+
+.leftIcon svg {
+    transform: rotate(180deg);
+}
+
+.disabledSvg svg {
+    fill: var(--selectButtonSvgColorDisabled);
+}

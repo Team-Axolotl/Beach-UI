@@ -1,0 +1,127 @@
+@import './variables.css';
+
+.default {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.default:active,
+.default:focus,
+.default:hover {
+    outline: 0;
+}
+
+.primaryLight {
+    composes: default;
+    background-color: var(--primaryLightBtnColor);
+    border: 1px solid var(--primaryLightBtnBorderColor);
+    color: var(--primaryLightBtnFontColor);
+}
+
+.primaryLight:hover {
+    border: 1px solid var(--primaryLightBtnHoverBorderColor);
+    color: var(--primaryLightBtnHoverFontColor);
+}
+
+.primaryLight:active {
+    background-color: var(--primaryLightBtnActiveColor);
+    border: 1px solid var(--primaryLightBtnHoverBorderColor);
+    color: var(--primaryLightBtnHoverFontColor);
+}
+
+.primaryLight.disabled,
+.primaryLight.disabled:hover {
+    background-color: var(--primaryLightBtnDisabledColor);
+    border: 1px solid var(--primaryLightBtnDisabledBorderColor);
+    color: var(--primaryLightBtnDisabledFontColor);
+}
+
+.primaryDark {
+    composes: default;
+    background-color: var(--primaryDarkBtnColor);
+    border: 1px solid var(--primaryDarkBorderColor);
+    color: var(--primaryDarkFontColor);
+
+}
+
+.primaryDark:hover {
+    border: 1px solid var(--primaryDarkHoverBorderColor);
+    color: var(--primaryDarkHoverFontColor);
+}
+
+.primaryDark:active {
+    background-color: var(--primaryDarkBtnActiveColor);
+    border: 1px solid var(--primaryDarkHoverBorderColor);
+    color: var(--primaryDarkHoverFontColor);
+}
+
+.primaryDark.disabled, 
+.primaryDark.disabled:hover {
+    background-color: var(--primaryDarkBtnDisabledColor);
+    border: 1px solid var(--primaryDarkBtnDisabledBorderColor);
+    color: var(--primaryDarkBtnDisabledFontColor);
+}
+
+.primaryBlue {
+    composes: default;
+    background-color: var(--primaryBlueBtnColor);
+    border: 1px solid var(--primaryBlueBtnColor);
+    color: var(--primaryBlueBtnFontColor);
+}
+
+.primaryBlue:hover {
+    background-color: var(--primaryBlueBtnHoverColor);
+    color: var(--primaryBlueBtnFontColor);
+}
+
+.primaryBlue:active {
+    background-color: var(--primaryBlueBtnActiveColor);
+    color: var(--primaryBlueBtnFontColor);
+}
+
+.primaryBlue.disabled, 
+.primaryBlue.disabled:hover {
+    background-color: var(--primaryBlueBtnDisabledColor);
+    border-color: var(--primaryBlueBtnDisabledColor);
+    color: var(--primaryBlueBtnFontColor);
+}
+
+.longButton {
+    composes: default;
+    background-color: transparent;
+    border: 1px transparent;
+}
+
+.primaryLong {
+    composes: longButton;
+    color: var(--primaryLongBtnColor);
+}
+
+.primaryLong:hover {
+    text-decoration: underline;
+}
+
+.secondaryLong {
+    composes: longButton;
+    color: var(--secondaryLongBtnColor);
+}
+
+.secondaryLong:hover {
+    text-decoration: underline;
+}
+
+.secondaryLong.disabled, 
+.secondaryLong.disabled:hover {
+    color: var(--secondaryLongBtnDisabledColor);
+    text-decoration: none;
+}
+
+.linkBtn {
+    text-decoration: none;
+}

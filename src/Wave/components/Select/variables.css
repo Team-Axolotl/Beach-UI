@@ -1,0 +1,6 @@
+:root {
+    --selectButtonBackgroundColor: #E6EFFE;
+    --selectButtonBackgroundColorHover: #E6EFFE;
+    --selectButtonSvgColor: #4196FD;
+    --selectButtonSvgColorDisabled: #BEBCBC;
+}

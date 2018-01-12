@@ -1,0 +1,11 @@
+@import './variables.css';
+
+.layout {
+    height: 100%;
+    background: #f2f2f2;
+}
+
+.header {
+    height: 58px;
+    border-bottom: 1px solid var(--tabBorderColor);
+}

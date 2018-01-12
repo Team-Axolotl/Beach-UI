@@ -1,0 +1,31 @@
+:root {
+    --primaryLightBtnColor: #FFFFFF;
+    --primaryLightBtnBorderColor: #CCCCCC;
+    --primaryLightBtnFontColor: #595959;
+    --primaryLightBtnHoverBorderColor: #999999;
+    --primaryLightBtnHoverFontColor: #000000;
+    --primaryLightBtnActiveColor: #FAFAFA;
+    --primaryLightBtnDisabledColor: #ECECEC;
+    --primaryLightBtnDisabledBorderColor: #DDDDDD;
+    --primaryLightBtnDisabledFontColor: #999999;
+
+    --primaryDarkBtnColor: #F4F4F4;
+    --primaryDarkBorderColor: #CCCCCC;
+    --primaryDarkFontColor: #595959;
+    --primaryDarkHoverBorderColor: #999999;
+    --primaryDarkHoverFontColor: #000000;
+    --primaryDarkBtnActiveColor: #ECECEC;
+    --primaryDarkBtnDisabledColor: #F4F4F4;
+    --primaryDarkBtnDisabledBorderColor: #DDDDDD;
+    --primaryDarkBtnDisabledFontColor: #999999;
+
+    --primaryBlueBtnColor: #4096fd;
+    --primaryBlueBtnFontColor: #FFFFFF;
+    --primaryBlueBtnActiveColor: #3d8dee;
+    --primaryBlueBtnHoverColor: #4f9efc;
+    --primaryBlueBtnDisabledColor: #c5dffe;
+
+    --primaryLongBtnColor: #2881ec;
+    --secondaryLongBtnColor: #595959;
+    --secondaryLongBtnDisabledColor: #999999;
+}
