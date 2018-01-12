@@ -3,16 +3,22 @@
     border: 1px solid #d6d6d6;
     background-color: #f9f9f9;
     text-transform: uppercase;
+    margin-bottom: 12px;
 }
 
 .textField {
+    display: inline-block;
     width: 150px;
     padding-left: 10px;
     padding-right: 10px;
     border: 1px solid #D6D6D6;
-    display: inline-block;
+    background: pink;
 }
 
 .formBody {
     display: flex;
+}
+
+.row {
+    border: '1px solid #CCCCCC'
 }
