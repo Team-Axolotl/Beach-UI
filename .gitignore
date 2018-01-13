@@ -81,3 +81,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Dream
+docs/dreamCompiled.js
+configs/dreamConfig.js

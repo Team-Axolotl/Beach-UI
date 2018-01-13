@@ -14,6 +14,7 @@ import './style.css';
 import 'react-virtualized/styles.css';
 
 // Load page components.
+import Main from 'Main';
 import LoginPage from '_impl/pages/Login/LoginPage';
 import HomePage from '_impl/pages/Home/HomePage';
 import SearchPage from '_impl/pages/Search/SearchPage';
@@ -43,6 +44,7 @@ ReactDOM.render(
         <Provider store={dreamStore}>
             <BrowserRouter>
                 <Switch>
+                    <Route exact path='/' component={Main} />
                     {/* Routes without authentification */}
                     <Route exact path='/beach' component={Beach} />
                     <Route exact path='/loginExample' component={LoginFormExample} />
@@ -53,9 +55,8 @@ ReactDOM.render(
                         <Route exact path='/yuzkan-form' component={YuzkanForm} />
                     </ThemeEngine>
                     <Authentificator>
-                        {/* Routes without navigation bar */}
+                        {/* Routes with navigation bar */}
                         <NavigationBar />
-                        <Route exact path='/' component={HomePage} />
                         <Route exact path='/home' component={HomePage} />
                         <Route exact path='/search' component={SearchPage} />
                         <Route exact path='/users' component={UserGrid} />

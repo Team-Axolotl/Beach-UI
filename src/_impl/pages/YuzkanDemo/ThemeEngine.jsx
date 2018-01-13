@@ -3,19 +3,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 class ThemeEngine extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
- null
+            this.props.children
         );
     }
 }
 
 ThemeEngine.propTypes = {
-
+    children: PropTypes.node
 };
 
 export default connect(

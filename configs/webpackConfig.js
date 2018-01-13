@@ -16,6 +16,8 @@ const plugins = [HtmlWebpackPluginConfig];
 if (dreamConfig.Frontend.DevMode) {
     plugins.push(new webpack.HotModuleReplacementPlugin());
     plugins.push(new webpack.NamedModulesPlugin());
+// Load prod mode plugins.
+} else {
     plugins.push(new webpack.optimize.AggressiveMergingPlugin());
     plugins.push(new webpack.optimize.UglifyJsPlugin({
         compress: {
