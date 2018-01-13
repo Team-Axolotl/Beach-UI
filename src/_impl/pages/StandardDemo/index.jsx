@@ -58,17 +58,17 @@ export default class StandardDemo extends React.Component {
                 </Row>
                 <Row className={style.padRow} justify='center'>
                     <Col md={1}>
-                        <StandardButton type={'white'}>
+                        <StandardButton styleType={'white'}>
                             {'Clicky'}
                         </StandardButton>
                     </Col>
                     <Col md={1}>
-                        <StandardButton type={'white'} disabled>
+                        <StandardButton styleType={'white'} disabled>
                             {'No-Clicky'}
                         </StandardButton>
                     </Col>
                     <Col md={1}>
-                        <StandardButton type={'white'}>
+                        <StandardButton styleType={'white'}>
                             <Delete />
                             {'Delete'}
                         </StandardButton>
@@ -76,17 +76,17 @@ export default class StandardDemo extends React.Component {
                 </Row>
                 <Row className={style.padRow} justify='center'>
                     <Col md={1}>
-                        <StandardButton type={'blue'}>
+                        <StandardButton styleType={'blue'}>
                             {'Clicky'}
                         </StandardButton>
                     </Col>
                     <Col md={1}>
-                        <StandardButton type={'blue'} disabled>
+                        <StandardButton styleType={'blue'} disabled>
                             {'No-Clicky'}
                         </StandardButton>
                     </Col>
                     <Col md={1}>
-                        <StandardButton type={'blue'}>
+                        <StandardButton styleType={'blue'}>
                             <Delete />
                             {'Delete'}
                         </StandardButton>
@@ -94,17 +94,17 @@ export default class StandardDemo extends React.Component {
                 </Row>
                 <Row className={style.padRow} justify='center'>
                     <Col md={1}>
-                        <StandardButton type={'label'}>
+                        <StandardButton styleType={'label'}>
                             {'Clicky'}
                         </StandardButton>
                     </Col>
                     <Col md={1}>
-                        <StandardButton type={'label'} disabled>
+                        <StandardButton styleType={'label'} disabled>
                             {'No-Clicky'}
                         </StandardButton>
                     </Col>
                     <Col md={1}>
-                        <StandardButton type={'label'}>
+                        <StandardButton styleType={'label'}>
                             <Delete />
                             {'Delete'}
                         </StandardButton>
@@ -112,17 +112,17 @@ export default class StandardDemo extends React.Component {
                 </Row>
                 <Row className={style.padRow} justify='center'>
                     <Col md={1}>
-                        <StandardButton type={'link'}>
+                        <StandardButton styleType={'link'}>
                             {'Clicky'}
                         </StandardButton>
                     </Col>
                     <Col md={1}>
-                        <StandardButton type={'link'} disabled>
+                        <StandardButton styleType={'link'} disabled>
                             {'No-Clicky'}
                         </StandardButton>
                     </Col>
                     <Col md={1}>
-                        <StandardButton type={'link'}>
+                        <StandardButton styleType={'link'}>
                             <Delete />
                             {'Delete'}
                         </StandardButton>
@@ -130,17 +130,17 @@ export default class StandardDemo extends React.Component {
                 </Row>
                 <Row className={style.padRow} justify='center'>
                     <Col md={1}>
-                        <StandardButton type={'custom'} customStyle={MicrocredCustomStyledButton}>
+                        <StandardButton styleType={'custom'} customStyle={MicrocredCustomStyledButton}>
                             {'Clicky'}
                         </StandardButton>
                     </Col>
                     <Col md={1}>
-                        <StandardButton type={'custom'} customStyle={MicrocredCustomStyledButton} disabled>
+                        <StandardButton styleType={'custom'} customStyle={MicrocredCustomStyledButton} disabled>
                             {'No-Clicky'}
                         </StandardButton>
                     </Col>
                     <Col md={1}>
-                        <StandardButton type={'custom'} customStyle={MicrocredCustomStyledButton}>
+                        <StandardButton styleType={'custom'} customStyle={MicrocredCustomStyledButton}>
                             <Delete />
                             {'Delete'}
                         </StandardButton>
