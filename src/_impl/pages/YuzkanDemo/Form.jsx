@@ -24,7 +24,7 @@ class Form extends React.Component {
     }
 
     applyInput(e) {
-        this.state.inputs[e.target.]
+        //this.state.inputs[e.target.]
     }
 
     render() {
