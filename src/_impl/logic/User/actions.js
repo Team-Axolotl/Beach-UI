@@ -39,3 +39,49 @@ export function Logout() {
         }
     };
 };
+
+export function createUser(firstName, lastName, gender, userName, password, phoneNumber) {
+    return {
+        type: Types.CREATE_USER,
+        request: 'rpc/user.user.add',
+        body: {
+            method: 'user.user.add',
+            params: {
+                hash: [{
+                    type: 'password',
+                    value: password,
+                    expireDate: 1515937876599,
+                    identifier: userName,
+                    isEnabled: true
+                }],
+                user: [{
+                    isApproved: true,
+                    primaryLanguageId: 1
+                }],
+                actorHierarchy: [{
+                    predicate: 'memberOf',
+                    object: '1003'
+                }],
+                roles: [],
+                person: {
+                    firstName,
+                    lastName,
+                    gender
+                },
+                email: [],
+                phone: [{
+                    phoneNumber,
+                    phoneTypeId: 'personal',
+                    statusId: 'active',
+                    mnoId: '1',
+                    isPrimary: true
+                }],
+                address: [],
+                policyId: 2,
+                externalUser: [],
+                userToExternalUser: [],
+                ldap: false
+            }
+        }
+    };
+}

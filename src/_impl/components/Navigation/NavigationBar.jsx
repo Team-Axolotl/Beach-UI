@@ -16,6 +16,8 @@ import Typography from 'material-ui/Typography';
 
 import { Logout } from '_impl/logic/User/actions';
 
+import Translate from '_standard/components/Translate';
+
 const menuStyles = theme => ({
     paper: {
         width: '200px',
@@ -56,7 +58,7 @@ class NavigationBar extends React.Component {
     }
 
     render() {
-        return (
+        return (<div>
             <AppBar position='static'>
                 <Toolbar>
                     <Row justify='flex-start' alignItems='center'>
@@ -76,27 +78,28 @@ class NavigationBar extends React.Component {
                                 horizontal: 'left'
                             }}
                         >
-                            <NavigationLink link={'/home'} onClick={this.navigateToPage}>{'Home'}</NavigationLink>
+                            <NavigationLink link={'/home'} onClick={this.navigateToPage}>{'Create User'}</NavigationLink>
                             <NavigationLink link={'/search'} onClick={this.navigateToPage}>{'Search'}</NavigationLink>
                             <NavigationLink link={'/users'} onClick={this.navigateToPage}>{'Users'}</NavigationLink>
                         </StyledMenu>
                         <Typography type='subheading' color='inherit'>
-                            {'Hello ' + this.props.userName}
+                            <Translate>{'Hello'}</Translate>{' '}{this.props.userName}
                         </Typography>
                     </Row>
-
                     <Row justify='flex-end'>
-
                         <LogoutButton />
                     </Row>
                 </Toolbar>
             </AppBar>
+            {this.props.children}
+        </div>
         );
     }
 }
 
 NavigationBar.propTypes = {
-    userName: PropTypes.string
+    userName: PropTypes.string,
+    children: PropTypes.node
 };
 
 NavigationBar.contextTypes = {

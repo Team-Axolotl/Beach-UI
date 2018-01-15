@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Map } from 'immutable';
-import { Redirect } from 'react-router-dom';
+import { Route, IndexRoute, Redirect } from 'react-router';
 
 import { CheckLogin } from '_impl/logic/User/actions';
 
@@ -13,8 +12,22 @@ class Authentificator extends React.Component {
         super(props, context);
 
         this.state = {
-            loading: false
+            loading: true
         };
+    }
+
+    componentDidMount() {
+        // If not authentificated, not loading, and not currently on the login screen - go to the login screen. Is run once.
+        if (!this.props.authentificated && !this.state.loading && this.context.router.location.pathname !== '/login') {
+            this.context.router.push('/login');
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        // If not authentificated, and not currently on the login screen - go to the login screen. Is run every re-render.
+        if (!nextProps.authentificated && this.context.router.location.pathname !== '/login') {
+            this.context.router.push('/login');
+        }
     }
 
     componentWillMount() {
@@ -34,14 +47,19 @@ class Authentificator extends React.Component {
                 }
 
                 this.setState({ loading: false });
+
                 return false;
             }).catch(() => {
                 deleteCookies();
-                // In case of error, user is not logged in.
-                this.context.router.history.push('/login');
+
+                // In case of an error go to login.
+                this.context.router.push('/login');
+
                 // Stop loading.
                 this.setState({ loading: false });
             });
+        } else {
+            this.state.loading = false;
         }
     }
 
@@ -51,25 +69,14 @@ class Authentificator extends React.Component {
             return <div>Loading...</div>;
         }
 
-        let authentificated = this.props.login.getIn(['identity.check', 'sessionId']);
-        let isLoginPage = this.context.router.history.location.pathname === '/login';
-
-        // If authentificated don't show login.
-        if (authentificated && isLoginPage) {
-            // console.log('If authentificated don\'t show login.');
-            return <Redirect to={'/home'} />;
-            // If authentificated show page.
-        } else if (authentificated && !isLoginPage) {
-            // console.log('If authentificated show page.');
-            return this.props.children;
-            // If not authentificated redirect to login.
-        } else if (!authentificated && !isLoginPage) {
-            // console.log('If not authentificated redirect to login.');
-            return <Redirect to={'/login'} />;
-            // If not authentificated and on login, show it.
-        } else if (!authentificated && isLoginPage) {
-            // console.log('If not authentificated and on login, show it.');
-            return this.props.children;
+        if (this.props.authentificated || this.context.router.location.pathname === '/login') {
+            return (
+                this.props.children
+            );
+        } else {
+            return (
+                null
+            );
         }
     }
 }
@@ -80,14 +87,14 @@ Authentificator.contextTypes = {
 
 Authentificator.propTypes = {
     children: PropTypes.node,
-    login: PropTypes.instanceOf(Map),
+    authentificated: PropTypes.string,
     CheckLogin: PropTypes.func
 };
 
 export default connect(
     (state, props) => {
         return {
-            login: state.User.get('login', new Map())
+            authentificated: state.User.getIn(['login', 'identity.check', 'sessionId'], '')
         };
     },
     {

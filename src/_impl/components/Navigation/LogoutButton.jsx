@@ -34,7 +34,9 @@ class LogoutButton extends React.Component {
                         deleteCookies();
                         this.context.router.history.push('/login');
                         return false;
-                    }).catch(() => { this.context.router.history.push('/login'); });
+                    }).catch(() => {
+                        this.context.router.history.push('/login');
+                    });
                 }}
             >
                 {'Logout'}

@@ -154,7 +154,7 @@ export default class StandardDemo extends React.Component {
                 </Row>
                 <Row className={style.padRow} justify='center'>
                     <Col md={5}>
-                        <StandardInput error label={'Error! You did something wrong mate.'} />
+                        <StandardInput error={'Error! You did something wrong mate.'} />
                     </Col>
                 </Row>
                 <Row className={style.padRow} justify='center'>

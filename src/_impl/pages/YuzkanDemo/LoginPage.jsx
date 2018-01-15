@@ -32,24 +32,37 @@ class LoginPage extends React.Component {
         this.login = this.login.bind(this);
     }
 
+    componentWillMount() {
+        // If authentificated go home. Is run once.
+        if (this.props.authentificated) this.context.router.push('/home');
+    }
+
+    componentWillReceiveProps(nextProps) {
+        // If authentificated go home. Is run every re-render.
+        if (nextProps.authentificated) this.context.router.push('/home');
+    }
+
     login() {
         if (this.state.password === '' || this.state.username === '') {
+            // Both fields are required.
             this.setState({ loginError: 'Both fields are required.', loading: false });
             return;
         }
 
         this.props.Login(this.state.username, this.state.password).then((a) => {
-            // Check error message for password switch.
+            // Get error message and display it, unless password switch error.
             if (a.state === 'error' && a.response.get('message') !== 'Switch to password') {
                 this.setState({ loginError: a.response.get('message'), loading: false });
             }
 
             if (a.state === 'finished') {
-                this.context.router.history.push('/yuzkan-form');
+                // If logged in successfully redirect to home.
+                this.context.router.push('/home');
             }
 
             return false;
         }).catch((x) => {
+            // In case of an error, log it, and turn off loading.
             this.setState({ loginError: x, loading: false });
         });
 
@@ -66,7 +79,7 @@ class LoginPage extends React.Component {
                 </Row>
                 <Row justify='center' spacing={0}>
                     <Col xs={11} sm={6} md={4}>
-                        <FormContainer onEnter={this.login} style={Object.assign({ position: 'relative' }, this.props.style)} className={this.props.className}>
+                        <FormContainer onEnter={this.login} style={Object.assign({ position: 'relative' })}>
                             <Paper elevation={12} style={
                                 {
                                     padding: '20px',
@@ -117,7 +130,8 @@ class LoginPage extends React.Component {
 }
 
 LoginPage.propTypes = {
-    Login: PropTypes.func
+    Login: PropTypes.func,
+    authentificated: PropTypes.string
 };
 
 LoginPage.contextTypes = {
@@ -127,7 +141,7 @@ LoginPage.contextTypes = {
 export default connect(
     (state, props) => {
         return {
-
+            authentificated: state.User.getIn(['login', 'xsrf', 'uuId'], '')
         };
     },
     {

@@ -6,7 +6,8 @@ const defaultState = fromJS({
 
 export const Types = {
     LOGIN: Symbol('LOGIN'),
-    LOGOUT: Symbol('LOGOUT')
+    LOGOUT: Symbol('LOGOUT'),
+    CREATE_USER: Symbol('CREATE_USER')
 };
 
 export default function main(state = defaultState, action) {

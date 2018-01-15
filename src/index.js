@@ -3,7 +3,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Router, Route, IndexRoute, Link, Redirect, browserHistory } from 'react-router';
 import dreamStore from '_dream/dreamStore.js';
 
 // Load material ui setup.
@@ -13,28 +13,20 @@ import 'normalize.css';
 import './style.css';
 import 'react-virtualized/styles.css';
 
-// Load page components.
-import Main from 'Main';
-import LoginPage from '_impl/pages/Login/LoginPage';
-import HomePage from '_impl/pages/Home/HomePage';
-import SearchPage from '_impl/pages/Search/SearchPage';
-import Beach from '_impl/pages/Beach';
-import LoginFormExample from '_impl/pages/Beach/LoginFormExample/';
-import UserGrid from '_impl/pages/User/UserGrid';
-import StandardDemo from '_impl/pages/StandardDemo';
-
-// Yuzkan Demo Pages
-import YuzkanLogin from '_impl/pages/YuzkanDemo/Login';
-import YuzkanForm from '_impl/pages/YuzkanDemo/Form';
-import ThemeEngine from '_impl/pages/YuzkanDemo/ThemeEngine';
-
 import Authentificator from '_impl/components/Authentificator';
+
+// Pages
+import StandardDemo from '_impl/pages/StandardDemo';
+import Beach from '_impl/pages/Beach';
+import YuzkanLogin from '_impl/pages/YuzkanDemo/LoginPage';
+import YuzkanForm from '_impl/pages/YuzkanDemo/Form/index';
+
 import NavigationBar from '_impl/components/Navigation/NavigationBar';
 
 const theme = createMuiTheme({
     palette: {
         primary: pink,
-        secondary: deepPurple,
+        secondary: grey,
         textColor: grey
     }
 });
@@ -42,26 +34,16 @@ const theme = createMuiTheme({
 ReactDOM.render(
     <MuiThemeProvider theme={theme} >
         <Provider store={dreamStore}>
-            <BrowserRouter>
-                <Switch>
-                    <Route exact path='/' component={Main} />
-                    {/* Routes without authentification */}
-                    <Route exact path='/beach' component={Beach} />
-                    <Route exact path='/loginExample' component={LoginFormExample} />
-                    <Route exact path='/standard-demo' component={StandardDemo} />
-                    <Route exact path='/login' component={LoginPage} />
-                    <ThemeEngine>
-                        <Route exact path='/yuzkan-login' component={YuzkanLogin} />
-                        <Route exact path='/yuzkan-form' component={YuzkanForm} />
-                    </ThemeEngine>
-                    <Authentificator>
-                        {/* Routes with navigation bar */}
-                        <NavigationBar />
-                        <Route exact path='/home' component={HomePage} />
-                        <Route exact path='/search' component={SearchPage} />
-                        <Route exact path='/users' component={UserGrid} />
-                    </Authentificator>
-                </Switch>
-            </BrowserRouter>
+            <Router history={browserHistory}>
+                <Route path='/beach' component={Beach} />
+                <Route path='/standard-demo' component={StandardDemo} />
+                <Route component={Authentificator}>
+                    <Route component={NavigationBar}>
+                        <Route path='/home' component={YuzkanForm} />
+                    </Route>
+                    <Route path='/login' component={YuzkanLogin} />
+                    <Redirect from='/' to='/login' />
+                </Route>
+            </Router>
         </Provider>
     </MuiThemeProvider>, document.getElementById('root'));

@@ -1,6 +1,7 @@
 const DefaultInput = {
     root: {
-        padding: 0
+        padding: 0,
+        width: '100%'
     },
     underline: {
         display: 'hidden'
@@ -19,7 +20,8 @@ const DefaultInput = {
 
 const ErrorInput = {
     root: {
-        padding: 0
+        padding: 0,
+        width: '100%'
     },
     underline: {
         display: 'hidden'
@@ -30,7 +32,6 @@ const ErrorInput = {
         fontSize: 15,
         background: '#ffffff',
         padding: '7px 5px 7px 5px',
-        width: '100%',
         '&:focus': {
             borderColor: '#000000'
         }
@@ -39,7 +40,8 @@ const ErrorInput = {
 
 const ReadOnlyInput = {
     root: {
-        padding: 0
+        padding: 0,
+        width: '100%'
     },
     underline: {
         display: 'hidden'
