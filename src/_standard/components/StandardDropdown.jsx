@@ -27,9 +27,8 @@ export default class StandardDropdown extends React.Component {
 
         return (
             <FormControl>
-                {/* <InputLabel htmlFor={name}>{placeholder}</InputLabel> */}
+                <InputLabel htmlFor={name}>{placeholder}</InputLabel>
                 <this.StyledDropdown displayEmpty {...other} input={<Input id={name} name={name} />} >
-                <option value=''>{'Select an option'}</option>
                     {this.props.children}
                 </this.StyledDropdown>
             </FormControl>
