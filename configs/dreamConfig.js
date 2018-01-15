@@ -4,7 +4,7 @@ module.exports = {
         Port: 88,
         DevMode: true,
         REST: {
-            Root: 'http://192.168.127.47:8003/',
+            Root: 'http://192.168.127.112:8003/',
             DefaultHeaders: {
                 'Content-Type': 'application/json',
                 accept: 'application/json'
