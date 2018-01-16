@@ -6,16 +6,18 @@ class Translate extends React.Component {
     render() {
         let translated = this.props.children;
 
-        if (this.props.translations) {
-            if (typeof translated === 'string') {
+        // Check if the child is a string.
+        if (typeof translated === 'string') {
+            if (this.props.translations) {
+                // If it is, and translations are loaded - translate it.
                 translated = this.props.translations[translated.toLowerCase().trim()];
-            } else if (translated.length > 0 && typeof translated[0] === 'string') {
-                translated = this.props.translations[translated.toLowerCase().trim()];
+            } else {
+                // If it is, and they aren't loaded - blur the original text. (Could be anything really.)
+                translated = (<span style={{ color: 'transparent', textShadow: '0 0 10px rgba(0, 0, 0, 0.5)' }}>{translated}</span>);
             }
-        } else {
-            translated = (<span style={{ color: 'transparent', textShadow: '0 0 10px rgba(0, 0, 0, 0.5)' }}>{translated}</span>);
         }
 
+        // If after translation the text is empty, like for instance a missing translation or other data corruption, display the original text.
         if (!translated) {
             translated = this.props.children;
         }

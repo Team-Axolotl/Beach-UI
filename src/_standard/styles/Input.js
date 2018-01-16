@@ -33,7 +33,7 @@ const ErrorInput = {
         background: '#ffffff',
         padding: '7px 5px 7px 5px',
         '&:focus': {
-            borderColor: '#000000'
+            borderColor: 'red'
         }
     }
 };

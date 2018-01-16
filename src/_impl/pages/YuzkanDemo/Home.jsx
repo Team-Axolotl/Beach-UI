@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import Row from '_dream/containers/Row';
+
 class Home extends React.Component {
     render() {
         return (
-            <div style={{ marginTop: '50px' }}>
+            <Row justify='center' style={{ marginTop: '50px' }}>
                 {'this is the home page, there isn\'t anything here really' }
-            </div>
+            </Row>
         );
     }
 }

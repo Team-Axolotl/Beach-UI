@@ -1,4 +1,4 @@
-import { Types } from './customerReducer';
+import { Types } from './reducer';
 
 export function Search(query, pageNumber) {
     return {

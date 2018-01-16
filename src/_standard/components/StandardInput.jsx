@@ -11,10 +11,17 @@ export default class StandardInput extends React.Component {
     constructor(props) {
         super(props);
 
-        let { styleType, customStyle, error, readOnly } = props;
+        this.calculateStyle = this.calculateStyle.bind(this);
 
-        if (error) styleType = 'error';
-        else if (readOnly) styleType = 'readonly';
+        this.calculateStyle(props);
+    }
+
+    calculateStyle(propObject) {
+        let { styleType, customStyle, error, readOnly } = propObject;
+
+        let styleTypeParsed = styleType;
+        if (error) styleTypeParsed = 'error';
+        else if (readOnly) styleTypeParsed = 'readonly';
 
         let typesSwitch = {
             'default': Default,
@@ -23,8 +30,14 @@ export default class StandardInput extends React.Component {
             'custom': customStyle
         };
 
-        this.StyledInput = withStyles(typesSwitch[styleType].input)(Input);
-        this.StyledErrorMessage = withStyles(typesSwitch[styleType].errorText)(Typography);
+        this.StyledInput = withStyles(typesSwitch[styleTypeParsed].input)(Input);
+        this.StyledErrorMessage = withStyles(typesSwitch[styleTypeParsed].errorText)(Typography);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.styleType !== this.props.styleType || nextProps.error !== this.props.error || nextProps.readOnly !== this.props.readOnly) {
+            this.calculateStyle(nextProps);
+        }
     }
 
     render() {
@@ -32,8 +45,8 @@ export default class StandardInput extends React.Component {
 
         return (
             <span>
-                <this.StyledInput {...other} />
-                <this.StyledErrorMessage {...this.props.errorTypoProps}>{this.props.error || this.props.label}</this.StyledErrorMessage>
+                <this.StyledInput error={!!error} {...other} />
+                <this.StyledErrorMessage {...this.props.errorTypoProps}>{error || label}</this.StyledErrorMessage>
             </span>
         );
     }

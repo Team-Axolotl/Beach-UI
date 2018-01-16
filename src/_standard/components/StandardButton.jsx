@@ -10,6 +10,12 @@ export default class StandardButton extends React.Component {
     constructor(props) {
         super(props);
 
+        this.calculateStyle = this.calculateStyle.bind(this);
+
+        this.calculateStyle(props);
+    }
+
+    calculateStyle() {
         let { styleType, customStyle } = this.props;
 
         let typesSwitch = {
@@ -22,6 +28,12 @@ export default class StandardButton extends React.Component {
         };
 
         this.StyledButton = withStyles(typesSwitch[styleType])(Button);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.styleType !== this.props.styleType) {
+            this.calculateStyle(nextProps);
+        }
     }
 
     render() {

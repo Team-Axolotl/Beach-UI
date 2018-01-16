@@ -1,4 +1,4 @@
-import { Types } from './userReducer';
+import { Types } from './reducer';
 
 export function Login(username, password) {
     return {

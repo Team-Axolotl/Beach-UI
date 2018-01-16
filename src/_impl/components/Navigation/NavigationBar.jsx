@@ -18,6 +18,7 @@ import Typography from 'material-ui/Typography';
 import { Logout } from '_impl/logic/User/actions';
 
 import Translate from '_standard/components/Translate';
+import Permission from '_standard/components/Permission';
 import StandardButton from '_standard/components/StandardButton';
 
 const menuStyles = theme => ({
@@ -96,21 +97,25 @@ class NavigationBar extends React.Component {
                                     {'Home'}
                                 </Translate>
                             </NavigationLink>
-                            <NavigationLink link={'/listUsers'} onClick={this.navigateToPage}>
-                                <Translate>
-                                    {'Users'}
-                                </Translate>
-                            </NavigationLink>
-                            <NavigationLink link={'/createUser'} onClick={this.navigateToPage}>
-                                <Translate>
-                                    {'Create User'}
-                                </Translate>
-                            </NavigationLink>
-                            <NavigationLink link={'/search'} onClick={this.navigateToPage}>
-                                <Translate>
-                                    {'Search'}
-                                </Translate>
-                            </NavigationLink>
+                            <Permission check='user.user.fetch'>
+                                <NavigationLink link={'/listUsers'} onClick={this.navigateToPage}>
+                                    <Translate>
+                                        {'Users'}
+                                    </Translate>
+                                </NavigationLink>
+                            </Permission>
+                            <Permission check='user.user.create'>
+                                <NavigationLink link={'/createUser'} onClick={this.navigateToPage}>
+                                    <Translate>
+                                        {'Create User'}
+                                    </Translate>
+                                </NavigationLink>
+                                <NavigationLink link={'/search'} onClick={this.navigateToPage}>
+                                    <Translate>
+                                        {'Search'}
+                                    </Translate>
+                                </NavigationLink>
+                            </Permission>
                         </StyledMenu>
                         <Typography type='subheading' color='inherit'>
                             <Translate>{'Hello'}</Translate>{' '}{this.props.userName}

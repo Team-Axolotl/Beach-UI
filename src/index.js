@@ -25,7 +25,8 @@ import UserList from '_impl/pages/User/UserGrid';
 
 // Helpers
 import NavigationBar from '_impl/components/Navigation/NavigationBar';
-import Helper from './_impl/pages/YuzkanDemo/Helper';
+import Helper from '_impl/pages/YuzkanDemo/Helper';
+import PermissionRoute from '_standard/components/PermissionRoute';
 
 const standardBlue = {
     50: '#77aff3',
@@ -62,8 +63,8 @@ ReactDOM.render(
                 <Route component={Authentificator}>
                     <Route component={Helper}>
                         <Route component={NavigationBar}>
-                            <Route path='/createUser' component={CreateUser} />
-                            <Route path='/listUsers' component={UserList} />
+                            <Route path='/createUser' component={() => <PermissionRoute check='user.user.create'><CreateUser /></PermissionRoute>} />
+                            <Route path='/listUsers' component={() => <PermissionRoute check='user.user.fetch'><UserList /></PermissionRoute>} />
                             <Route path='/home' component={Home} />
                         </Route>
                     </Route>

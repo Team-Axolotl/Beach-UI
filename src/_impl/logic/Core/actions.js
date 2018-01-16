@@ -1,4 +1,4 @@
-import { Types } from './coreReducer';
+import { Types } from './reducer';
 
 export function getTranslations(query, pageNumber) {
     return {
