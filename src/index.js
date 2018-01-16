@@ -8,7 +8,7 @@ import dreamStore from '_dream/dreamStore.js';
 
 // Load material ui setup.
 import { createMuiTheme, MuiThemeProvider } from 'material-ui/styles';
-import { grey } from 'material-ui/colors';
+import { grey, blue } from 'material-ui/colors';
 import 'normalize.css';
 import './style.css';
 import 'react-virtualized/styles.css';
@@ -50,7 +50,7 @@ const theme = createMuiTheme({
     palette: {
         primary: grey,
         secondary: standardBlue,
-        textColor: grey
+        textColor: grey.contrastDefaultColor
     }
 });
 

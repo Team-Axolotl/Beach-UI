@@ -16,13 +16,13 @@ export default class CustomerInfo extends React.Component {
                         <Row className={style.padRow} justify='center'>
                             <Col md={5} xs={12} sm={10}>
                                 <Translate>{'Username'}</Translate>
-                                <StandardInput onChange={this.props.applyInput} data={'userName'} value={this.props.inputs['userName'] || ''} />
+                                <StandardInput onChange={this.props.applyInput} data={'userName'} value={this.props.inputs['userName'] || ''} translateErrors error={this.props.errors['userName'] || ''} />
                             </Col>
                         </Row>
                         <Row className={style.padRow} justify='center'>
                             <Col md={5} xs={12} sm={10}>
                                 <Translate>{'Password'}</Translate>
-                                <StandardInput onChange={this.props.applyInput} data={'password'} value={this.props.inputs['password'] || ''} />
+                                <StandardInput onChange={this.props.applyInput} type='password' data={'password'} value={this.props.inputs['password'] || ''} translateErrors error={this.props.errors['password'] || ''} />
                             </Col>
                         </Row>
                 </Row>
@@ -33,6 +33,6 @@ export default class CustomerInfo extends React.Component {
 
 CustomerInfo.propTypes = {
     applyInput: PropTypes.func.isRequired,
-    applyInputDropdown: PropTypes.func.isRequired,
-    inputs: PropTypes.object.isRequired
+    inputs: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
 };

@@ -7,6 +7,8 @@ import Typography from 'material-ui/Typography';
 
 import { Default, ErrorStyle, ReadOnly } from '_standard/styles/Input';
 
+import Translate from '_standard/components/Translate';
+
 export default class StandardInput extends React.Component {
     constructor(props) {
         super(props);
@@ -20,6 +22,7 @@ export default class StandardInput extends React.Component {
         let { styleType, customStyle, error, readOnly } = propObject;
 
         let styleTypeParsed = styleType;
+
         if (error) styleTypeParsed = 'error';
         else if (readOnly) styleTypeParsed = 'readonly';
 
@@ -41,12 +44,24 @@ export default class StandardInput extends React.Component {
     }
 
     render() {
-        let { styleType, customStyle, error, label, errorTypoProps, ...other } = this.props;
+        let { styleType, customStyle, error, label, errorTypoProps, translateErrors, ...other } = this.props;
+
+        let errorNode;
+        // Check if translating errors.
+        if (translateErrors) {
+            errorNode = (<Translate>
+                {error || label}
+            </Translate>);
+        } else {
+            errorNode = error || label;
+        }
 
         return (
             <span>
                 <this.StyledInput error={!!error} {...other} />
-                <this.StyledErrorMessage {...this.props.errorTypoProps}>{error || label}</this.StyledErrorMessage>
+                <this.StyledErrorMessage {...this.props.errorTypoProps}>
+                    {errorNode}
+                </this.StyledErrorMessage>
             </span>
         );
     }
@@ -66,11 +81,14 @@ StandardInput.propTypes = {
     // The label to display.
     label: PropTypes.string,
     // Props for the error Typography object.
-    errorTypoProps: PropTypes.object
+    errorTypoProps: PropTypes.object,
+    // Whether to translate errors.
+    translateErrors: PropTypes.bool
 };
 
 StandardInput.defaultProps = {
     disableUnderline: true,
     styleType: 'default',
-    errorTypoProps: {}
+    errorTypoProps: {},
+    translateErrors: false
 };

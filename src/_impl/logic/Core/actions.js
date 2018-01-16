@@ -10,7 +10,7 @@ export function getTranslations(query, pageNumber) {
                 isEnabled: 1,
                 itemTypeName: 'text',
                 keyValue: true,
-                languageId: '3',
+                languageId: '1',
                 pageSize: 100000
             }
         }
