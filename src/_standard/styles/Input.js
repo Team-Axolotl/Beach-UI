@@ -59,7 +59,14 @@ const ReadOnlyInput = {
     }
 };
 
-const defaultErrorText = {
+const defaultLabel = {
+    root: {
+        fontSize: '13px',
+        marginLeft: '2px'
+    }
+};
+
+const errorLabel = {
     root: {
         color: 'red',
         fontSize: '13px',
@@ -69,17 +76,17 @@ const defaultErrorText = {
 
 const Default = {
     input: DefaultInput,
-    errorText: defaultErrorText
+    errorText: defaultLabel
 };
 
 const ErrorStyle = {
     input: ErrorInput,
-    errorText: defaultErrorText
+    errorText: errorLabel
 };
 
 const ReadOnly = {
     input: ReadOnlyInput,
-    errorText: defaultErrorText
+    errorText: defaultLabel
 };
 
 export { Default, ErrorStyle, ReadOnly };

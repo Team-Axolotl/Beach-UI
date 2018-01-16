@@ -154,6 +154,11 @@ export default class StandardDemo extends React.Component {
                 </Row>
                 <Row className={style.padRow} justify='center'>
                     <Col md={5}>
+                        <StandardInput label={'Input must be x or y.'} />
+                    </Col>
+                </Row>
+                <Row className={style.padRow} justify='center'>
+                    <Col md={5}>
                         <StandardInput error={'Error! You did something wrong mate.'} />
                     </Col>
                 </Row>

@@ -20,11 +20,7 @@ class Translate extends React.Component {
             translated = this.props.children;
         }
 
-        return (
-            <span>
-                {translated}
-            </span>
-        );
+        return translated;
     }
 }
 

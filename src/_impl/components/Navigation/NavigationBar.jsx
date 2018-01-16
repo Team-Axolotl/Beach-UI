@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { deleteCookies } from '_dream/helpers';
+
 import Row from '_dream/containers/Row';
-import LogoutButton from './LogoutButton';
 import NavigationLink from './NavigationLink';
 
 import { withStyles } from 'material-ui/styles';
@@ -17,6 +18,7 @@ import Typography from 'material-ui/Typography';
 import { Logout } from '_impl/logic/User/actions';
 
 import Translate from '_standard/components/Translate';
+import StandardButton from '_standard/components/StandardButton';
 
 const menuStyles = theme => ({
     paper: {
@@ -38,6 +40,7 @@ class NavigationBar extends React.Component {
         this.menuOpened = this.menuOpened.bind(this);
         this.menuClose = this.menuClose.bind(this);
         this.navigateToPage = this.navigateToPage.bind(this);
+        this.logout = this.logout.bind(this);
     }
 
     menuOpened(e) {
@@ -53,13 +56,23 @@ class NavigationBar extends React.Component {
     }
 
     navigateToPage(page) {
-        this.context.router.history.push(page);
+        this.context.router.push(page);
         this.menuClose();
+    }
+
+    logout() {
+        this.props.Logout().then(() => {
+            deleteCookies();
+            this.context.router.history.push('/login');
+            return false;
+        }).catch(() => {
+            this.context.router.history.push('/login');
+        });
     }
 
     render() {
         return (<div>
-            <AppBar position='static'>
+            <AppBar position='static' color='accent'>
                 <Toolbar>
                     <Row justify='flex-start' alignItems='center'>
                         <IconButton color='contrast' aria-label='Menu' onClick={this.menuOpened}>
@@ -78,16 +91,37 @@ class NavigationBar extends React.Component {
                                 horizontal: 'left'
                             }}
                         >
-                            <NavigationLink link={'/home'} onClick={this.navigateToPage}>{'Create User'}</NavigationLink>
-                            <NavigationLink link={'/search'} onClick={this.navigateToPage}>{'Search'}</NavigationLink>
-                            <NavigationLink link={'/users'} onClick={this.navigateToPage}>{'Users'}</NavigationLink>
+                            <NavigationLink link={'/home'} onClick={this.navigateToPage}>
+                                <Translate>
+                                    {'Home'}
+                                </Translate>
+                            </NavigationLink>
+                            <NavigationLink link={'/listUsers'} onClick={this.navigateToPage}>
+                                <Translate>
+                                    {'Users'}
+                                </Translate>
+                            </NavigationLink>
+                            <NavigationLink link={'/createUser'} onClick={this.navigateToPage}>
+                                <Translate>
+                                    {'Create User'}
+                                </Translate>
+                            </NavigationLink>
+                            <NavigationLink link={'/search'} onClick={this.navigateToPage}>
+                                <Translate>
+                                    {'Search'}
+                                </Translate>
+                            </NavigationLink>
                         </StyledMenu>
                         <Typography type='subheading' color='inherit'>
                             <Translate>{'Hello'}</Translate>{' '}{this.props.userName}
                         </Typography>
                     </Row>
                     <Row justify='flex-end'>
-                        <LogoutButton />
+                        <StandardButton onClick={this.logout}>
+                            <Translate>
+                                {'Logout'}
+                            </Translate>
+                        </StandardButton>
                     </Row>
                 </Toolbar>
             </AppBar>
@@ -99,7 +133,8 @@ class NavigationBar extends React.Component {
 
 NavigationBar.propTypes = {
     userName: PropTypes.string,
-    children: PropTypes.node
+    children: PropTypes.node,
+    Logout: PropTypes.func
 };
 
 NavigationBar.contextTypes = {

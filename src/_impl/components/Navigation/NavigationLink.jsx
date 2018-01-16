@@ -19,9 +19,11 @@ const StyledItem = withStyles(itemStyles)(MenuItem);
 
 export default class NavigationLink extends React.Component {
     render() {
+        let isCurrentPage = this.context.router.location.pathname === this.props.link;
+
         return (
-            <StyledItem disableRipple disabled={this.context.router.history.location.pathname === this.props.link} onClick={() => this.props.onClick(this.props.link)}>
-                {this.props.children}
+            <StyledItem disableRipple disabled={isCurrentPage} onClick={isCurrentPage ? null : () => this.props.onClick(this.props.link)}>
+                {isCurrentPage ? <span><span>{'> '}</span>{this.props.children}</span> : this.props.children}
             </StyledItem>
         );
     }
@@ -29,7 +31,7 @@ export default class NavigationLink extends React.Component {
 
 NavigationLink.propTypes = {
     link: PropTypes.string,
-    children: PropTypes.string,
+    children: PropTypes.node,
     onClick: PropTypes.func
 };
 
