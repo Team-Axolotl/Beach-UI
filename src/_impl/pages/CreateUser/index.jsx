@@ -16,7 +16,6 @@ import UserInfo from './UserInfo';
 import PhoneInfo from './PhoneInfo';
 
 import Translate from '_standard/components/Translate';
-import TranslateInline from '_standard/components/TranslateInline';
 
 class CreateUser extends React.Component {
     constructor(props) {
@@ -119,15 +118,15 @@ class CreateUser extends React.Component {
         return (
             <div style={{ marginTop: '50px' }}>
                 <Row justify='center'>
-                    <Col md={8} sm={10} xs={12} style={{ border: '1px solid #CCCCCC' }}>
+                    <Col md={10} xs={12} style={{ border: '1px solid #CCCCCC' }}>
                         <StandardTabs value={this.state.tab} onChange={this.tabChange} scrollable scrollButtons='auto' textColor={'accent'}>
-                            <StandardTab icon={this.state.problematicTabs.indexOf(0) === -1 ? null : <Problem />} disableRipple label={TranslateInline(this.props.translations, 'Customer')} />
-                            <StandardTab icon={this.state.problematicTabs.indexOf(1) === -1 ? null : <Problem />} disableRipple label={TranslateInline(this.props.translations, 'Phone')} />
-                            <StandardTab icon={this.state.problematicTabs.indexOf(2) === -1 ? null : <Problem />} disableRipple label={TranslateInline(this.props.translations, 'Login')} />
+                            <StandardTab icon={this.state.problematicTabs.indexOf(0) === -1 ? null : <Problem />} disableRipple label={<Translate>{'Customer'}</Translate>} />
+                            <StandardTab icon={this.state.problematicTabs.indexOf(1) === -1 ? null : <Problem />} disableRipple label={<Translate>{'Phone'}</Translate>} />
+                            <StandardTab icon={this.state.problematicTabs.indexOf(2) === -1 ? null : <Problem />} disableRipple label={<Translate>{'Login'}</Translate>} />
                         </StandardTabs>
                         {tabs[this.state.tab]}
                     </Col>
-                    <Col md={8} sm={10} xs={12}>
+                    <Col md={10} sm={10} xs={12}>
                         <StandardButton style={{ width: '100%', borderRadius: 0 }} styleType='blue' onClick={this.submitForm}>
                             <Translate>{'Create'}</Translate>
                         </StandardButton>
@@ -145,7 +144,7 @@ CreateUser.propTypes = {
 export default connect(
     (state, props) => {
         return {
-            translations: state.Core.get('translations', null)
+
         };
     },
     {

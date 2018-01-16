@@ -1,17 +1,24 @@
 import { fromJS, List } from 'immutable';
 
 const defaultState = fromJS({
-    login: {}
+    login: {},
+    users: []
 });
 
 export const Types = {
     LOGIN: Symbol('LOGIN'),
     LOGOUT: Symbol('LOGOUT'),
-    CREATE_USER: Symbol('CREATE_USER')
+    CREATE_USER: Symbol('CREATE_USER'),
+    FETCH_USERS: Symbol('FETCH_USERS')
 };
 
 export default function main(state = defaultState, action) {
     switch (action.type) {
+        case Types.FETCH_USERS:
+            if (action.state === 'finished') {
+                return state.set('users', action.response.getIn(['result', 'user']));
+            }
+            break;
         case Types.LOGIN:
             if (action.state === 'finished') {
                 let loginData = action.response.get('result', {});

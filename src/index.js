@@ -19,9 +19,9 @@ import Authentificator from '_impl/components/Authentificator';
 import StandardDemo from '_impl/pages/StandardDemo';
 import Beach from '_impl/pages/Beach';
 import Home from '_impl/pages/Home';
-import YuzkanLogin from '_impl/pages/Login';
+import Login from '_impl/pages/Login';
 import CreateUser from '_impl/pages/CreateUser';
-import UserList from '_impl/pages/User/UserGrid';
+import UserList from '_impl/pages/UserList';
 
 // Helpers
 import NavigationBar from '_impl/components/Navigation/NavigationBar';
@@ -68,7 +68,7 @@ ReactDOM.render(
                             <Route path='/home' component={Home} />
                         </Route>
                     </Route>
-                    <Route path='/login' component={YuzkanLogin} />
+                    <Route path='/login' component={Login} />
                     <Redirect from='/' to='/login' />
                 </Route>
             </Router>

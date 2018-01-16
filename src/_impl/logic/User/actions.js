@@ -85,3 +85,23 @@ export function createUser(firstName, lastName, gender, userName, password, phon
         }
     };
 }
+
+export function fetchUsers() {
+    return {
+        type: Types.FETCH_USERS,
+        request: 'rpc/user.user.fetch',
+        body: {
+            method: 'user.user.fetch',
+            params: {
+                'pageSize': 111111,
+                'pageNumber': 1,
+                'breadcrumbs': [],
+                'userType': 'Staff',
+                'customSearch': {
+                    'field': 'userName',
+                    'value': ''
+                }
+            }
+        }
+    };
+};
