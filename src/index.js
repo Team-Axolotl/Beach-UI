@@ -18,14 +18,14 @@ import Authentificator from '_impl/components/Authentificator';
 // Pages
 import StandardDemo from '_impl/pages/StandardDemo';
 import Beach from '_impl/pages/Beach';
-import Home from '_impl/pages/YuzkanDemo/Home';
-import YuzkanLogin from '_impl/pages/YuzkanDemo/LoginPage';
-import CreateUser from '_impl/pages/YuzkanDemo/Form/index';
+import Home from '_impl/pages/Home';
+import YuzkanLogin from '_impl/pages/Login';
+import CreateUser from '_impl/pages/CreateUser';
 import UserList from '_impl/pages/User/UserGrid';
 
 // Helpers
 import NavigationBar from '_impl/components/Navigation/NavigationBar';
-import Helper from '_impl/pages/YuzkanDemo/Helper';
+import Helper from '_impl/components/PageHelper';
 import PermissionRoute from '_standard/components/PermissionRoute';
 
 const standardBlue = {
