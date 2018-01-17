@@ -21,8 +21,8 @@ class Grid extends React.Component {
         };
 
         this.rowGetter = this.rowGetter.bind(this);
+        this.headerRenderer = this.headerRenderer.bind(this);
         this.cellRenderer = this.cellRenderer.bind(this);
-        this.rowRenderer = this.rowRenderer.bind(this);
     }
 
     componentDidMount() {
@@ -43,12 +43,12 @@ class Grid extends React.Component {
         });
     }
 
-    cellRenderer(data, a, b, c) {
-        debugger;
+    headerRenderer(data) {
+        return <div>{data.label}</div>;
     }
 
-    rowRenderer(data, a, b, c) {
-        debugger;
+    cellRenderer(data) {
+        return <div style={{ background: 'lightgrey' }} >{data.cellData}</div>;
     }
 
     render() {
@@ -56,28 +56,28 @@ class Grid extends React.Component {
             <div style={{ marginTop: '50px' }}>
                 <Row justify='center' >
                     <Col md={10} xs={12}>
-                    <div style={{ width: '100%', height: '600px' }}>
-                        <AutoSizer>
-                            {({ height, width }) => (
-                                <Table
-                                  cellDataGetter={this.cellRenderer}
-                                  headerHeight={40}
-                                  height={height}
-                                  width={width}
-                                  rowCount={this.props.data.size}
-                                  rowGetter={this.rowGetter}
-                                  rowHeight={46}
-                                  noRowsRenderer={() => <div style={{ position: 'absolute', left: '45%', top: '45%' }} ><CircularProgress size={100} thickness={3} color={'primary'} /></div>}
-                                  sortBy={'userName'}
-                                >
-                                    <Column dataKey={'userName'} label={'Username'} width={100} flexGrow={1} />
-                                    <Column dataKey={'firstName'} label={'First Name'} width={100} flexGrow={1} />
-                                    <Column dataKey={'lastName'} label={'Last Name'} width={100} flexGrow={1} />
-                                    <Column dataKey={'branches'} label={'Branch'} width={100} flexGrow={1} />
-                                    <Column dataKey={'statusId'} label={'Status'} width={100} flexGrow={1} />
-                                </Table>
-                            )}
-                        </AutoSizer>
+                        <div style={{ width: '100%', height: '600px' }}>
+                            <AutoSizer>
+                                {({ height, width }) => (
+                                    <Table
+                                      cellDataGetter={this.cellRenderer}
+                                      headerHeight={40}
+                                      height={height}
+                                      width={width}
+                                      rowCount={this.props.data.size}
+                                      rowGetter={this.rowGetter}
+                                      rowHeight={46}
+                                      noRowsRenderer={() => <div style={{ position: 'absolute', left: '45%', top: '45%' }} ><CircularProgress size={100} thickness={3} color={'primary'} /></div>}
+                                      sortBy={'userName'}
+                                    >
+                                        <Column cellRenderer={this.cellRenderer} headerRenderer={this.headerRenderer} dataKey={'userName'} label={'Username'} width={100} flexGrow={1} />
+                                        <Column headerRenderer={this.headerRenderer} dataKey={'firstName'} label={'First Name'} width={100} flexGrow={1} />
+                                        <Column headerRenderer={this.headerRenderer} dataKey={'lastName'} label={'Last Name'} width={100} flexGrow={1} />
+                                        <Column headerRenderer={this.headerRenderer} dataKey={'branches'} label={'Branch'} width={100} flexGrow={1} />
+                                        <Column headerRenderer={this.headerRenderer} dataKey={'statusId'} label={'Status'} width={100} flexGrow={1} />
+                                    </Table>
+                                )}
+                            </AutoSizer>
                         </div>
                     </Col>
                 </Row>
