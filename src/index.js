@@ -59,10 +59,10 @@ ReactDOM.render(
         <Provider store={dreamStore}>
             <Router history={browserHistory}>
                 <Route path='/beach' component={Beach} />
-                <Route path='/standard-demo' component={StandardDemo} />
                 <Route component={Authentificator}>
                     <Route component={Helper}>
                         <Route component={NavigationBar}>
+                        <Route path='/standard-demo' component={StandardDemo} />
                             <Route path='/createUser' component={() => <PermissionRoute check='user.user.create'><CreateUser /></PermissionRoute>} />
                             <Route path='/listUsers' component={() => <PermissionRoute check='user.user.fetch'><UserList /></PermissionRoute>} />
                             <Route path='/home' component={Home} />

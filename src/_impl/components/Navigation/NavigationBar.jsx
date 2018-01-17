@@ -116,6 +116,11 @@ class NavigationBar extends React.Component {
                                     </Translate>
                                 </NavigationLink>
                             </Permission>
+                            <NavigationLink link={'/standard-demo'} onClick={this.navigateToPage}>
+                                <Translate>
+                                    {'StandardDemo'}
+                                </Translate>
+                            </NavigationLink>
                         </StyledMenu>
                         <Typography type='subheading' color='inherit'>
                             <Translate>{'Hello'}</Translate>{' '}{this.props.userName}
