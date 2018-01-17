@@ -64,10 +64,10 @@ class NavigationBar extends React.Component {
     logout() {
         this.props.Logout().then(() => {
             deleteCookies();
-            this.context.router.history.push('/login');
+            this.context.router.push('/login');
             return false;
         }).catch(() => {
-            this.context.router.history.push('/login');
+            this.context.router.push('/login');
         });
     }
 
