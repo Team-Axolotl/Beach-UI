@@ -110,11 +110,6 @@ class NavigationBar extends React.Component {
                                         {'Create User'}
                                     </Translate>
                                 </NavigationLink>
-                                <NavigationLink link={'/search'} onClick={this.navigateToPage}>
-                                    <Translate>
-                                        {'Search'}
-                                    </Translate>
-                                </NavigationLink>
                             </Permission>
                             <NavigationLink link={'/standard-demo'} onClick={this.navigateToPage}>
                                 <Translate>
