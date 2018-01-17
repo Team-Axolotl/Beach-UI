@@ -7,6 +7,12 @@ import Col from '_dream/containers/Col';
 import Delete from 'material-ui-icons/Delete';
 import StandardButton from '_standard/components/StandardButton';
 import StandardInput from '_standard/components/StandardInput';
+import StandardTabs from '_standard/components/StandardTabs';
+import StandardTab from '_standard/components/StandardTab';
+
+import { TabScrollButton } from 'material-ui/Tabs';
+
+import Arrow from 'material-ui-icons/KeyboardArrowRight';
 
 import style from 'style.css';
 
@@ -32,12 +38,20 @@ export default class StandardDemo extends React.Component {
         super(props);
 
         this.state = {
-            textValue: ''
+            textValue: '',
+            selectedTab: 0
         };
+
+        this.handleTabChange = this.handleTabChange.bind(this);
     }
+
+    handleTabChange(event, value) {
+        this.setState({ selectedTab: value });
+    }
+
     render() {
         return (
-            <div>
+            <div style={{marginTop: '20px'}}>
                 <Row className={style.padRow} justify='center'>
                     <Col md={1}>
                         <StandardButton>
@@ -165,6 +179,24 @@ export default class StandardDemo extends React.Component {
                 <Row className={style.padRow} justify='center'>
                     <Col md={5}>
                         <StandardInput readOnly value={'Reading only!'} />
+                    </Col>
+                </Row>
+                <div style={{ marginTop: '100px' }} />
+                <Row className={style.padRow} justify='center'>
+                    <Col md={5}>
+                        <StandardTabs value={this.state.selectedTab}
+                          onChange={this.handleTabChange}
+                          scrollable
+                          indicatorColor='accent'
+                          TabScrollButton={({ onClick }) => <StandardButton styleType='white' onClick={onClick}><Arrow /></StandardButton>}>
+                            <StandardTab label='General info' />
+                            <StandardTab label='Contact info' />
+                            <StandardTab label='Assigned roles' />
+                            <StandardTab label='Credentials' />
+                            <StandardTab label='External credentials' />
+                            <StandardTab label='Business unit management' />
+                            <StandardTab label='Access policy' />
+                        </StandardTabs>
                     </Col>
                 </Row>
             </div>

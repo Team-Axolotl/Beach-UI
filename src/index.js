@@ -13,8 +13,6 @@ import 'normalize.css';
 import './style.css';
 import 'react-virtualized/styles.css';
 
-import Authentificator from '_impl/components/Authentificator';
-
 // Pages
 import StandardDemo from '_impl/pages/StandardDemo';
 import Beach from '_impl/pages/Beach';
@@ -24,9 +22,11 @@ import CreateUser from '_impl/pages/CreateUser';
 import UserList from '_impl/pages/UserList';
 
 // Helpers
+import PermissionRoute from '_standard/components/PermissionRoute';
+import Authentificator from '_impl/components/Authentificator';
 import NavigationBar from '_impl/components/Navigation/NavigationBar';
 import Helper from '_impl/components/PageHelper';
-import PermissionRoute from '_standard/components/PermissionRoute';
+import StyleProvider from '_impl/components/StyleProvider/StyleProvider';
 
 const standardBlue = {
     50: '#77aff3',
@@ -55,22 +55,26 @@ const theme = createMuiTheme({
 });
 
 ReactDOM.render(
-    <MuiThemeProvider theme={theme} >
-        <Provider store={dreamStore}>
-            <Router history={browserHistory}>
-                <Route path='/beach' component={Beach} />
-                <Route path='/standard-demo' component={StandardDemo} />
-                <Route component={Authentificator}>
-                    <Route component={Helper}>
-                        <Route component={NavigationBar}>
-                            <Route path='/createUser' component={() => <PermissionRoute check='user.user.create'><CreateUser /></PermissionRoute>} />
-                            <Route path='/listUsers' component={() => <PermissionRoute check='user.user.fetch'><UserList /></PermissionRoute>} />
-                            <Route path='/home' component={Home} />
+    <StyleProvider>
+        <MuiThemeProvider theme={theme}>
+            <Provider store={dreamStore}>
+                <Router history={browserHistory}>
+                    <Route path='/beach' component={Beach} />
+                    <Route path='/standard-demo' component={StandardDemo} />
+                    <Route component={Authentificator}>
+                        <Route component={Helper}>
+                            <Route component={NavigationBar}>
+                                <Route path='/createUser' component={() => <PermissionRoute check='user.user.create'><CreateUser /></PermissionRoute>} />
+                                <Route path='/listUsers' component={() => <PermissionRoute check='user.user.fetch'><UserList /></PermissionRoute>} />
+                                <Route path='/home' component={Home} />
+                            </Route>
                         </Route>
+                        <Route path='/login' component={Login} />
+                        <Redirect from='/' to='/login' />
                     </Route>
-                    <Route path='/login' component={Login} />
-                    <Redirect from='/' to='/login' />
-                </Route>
-            </Router>
-        </Provider>
-    </MuiThemeProvider>, document.getElementById('root'));
+                </Router>
+            </Provider>
+        </MuiThemeProvider>
+    </StyleProvider>,
+    document.getElementById('root')
+);
