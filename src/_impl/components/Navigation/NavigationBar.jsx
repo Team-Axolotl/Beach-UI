@@ -13,6 +13,8 @@ import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import Menu from 'material-ui/Menu';
 import MenuIcon from 'material-ui-icons/Menu';
+import Fader from '../../../_dream/containers/FadeContainer';
+import { CircularProgress } from 'material-ui';
 import Typography from 'material-ui/Typography';
 import { setModule, dynamicImport } from '../../dynamicImport'
 
@@ -36,7 +38,8 @@ class NavigationBar extends React.Component {
         super(props);
 
         this.state = {
-            menuButtonHandle: null
+            menuButtonHandle: null,
+            loading: false
         };
 
         this.menuOpened = this.menuOpened.bind(this);
@@ -52,7 +55,7 @@ class NavigationBar extends React.Component {
     }
 
     menuClose(e) {
-        this.setState({
+        return this.setState({
             menuButtonHandle: null
         });
     }
@@ -60,14 +63,16 @@ class NavigationBar extends React.Component {
     async navigateToPage(page) {
         // first char is / and need to be removed
         const dynamicImportName = page.slice(1);
+        await this.setState({loading: true});
+        await this.menuClose();
         const component = await dynamicImport(dynamicImportName);
         if (component) {
             const Component = component.default;
             setModule(dynamicImportName, Component);
         }
 
+        await this.setState({loading: false});
         this.context.router.push(page);
-        this.menuClose();
     }
 
     logout() {
@@ -144,7 +149,17 @@ class NavigationBar extends React.Component {
                     </Row>
                 </Toolbar>
             </AppBar>
-            {this.props.children}
+            {!this.state.loading && this.props.children}
+            <Fader visible={this.state.loading}>
+                <CircularProgress size={100} thickness={3} style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0,
+                    margin: 'auto'
+                }} />
+            </Fader>
         </div>
         );
     }

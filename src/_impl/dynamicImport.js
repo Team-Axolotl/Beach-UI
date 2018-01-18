@@ -2,7 +2,7 @@ const cache = {
     listUsers: null,
     createUser: null,
     'standard-demo': null
-}
+};
 
 export function getModule(name) {
     return new Promise((resolve, reject) => {
@@ -45,4 +45,4 @@ export function dynamicImport(moduleName) {
         default:
             return null;
     };
-}
+};
