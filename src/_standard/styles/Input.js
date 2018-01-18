@@ -1,7 +1,6 @@
 const DefaultInput = {
     root: {
-        padding: 0,
-        width: '100%'
+        padding: 0
     },
     underline: {
         display: 'hidden'
@@ -20,8 +19,7 @@ const DefaultInput = {
 
 const ErrorInput = {
     root: {
-        padding: 0,
-        width: '100%'
+        padding: 0
     },
     underline: {
         display: 'hidden'
@@ -40,8 +38,7 @@ const ErrorInput = {
 
 const ReadOnlyInput = {
     root: {
-        padding: 0,
-        width: '100%'
+        padding: 0
     },
     underline: {
         display: 'hidden'

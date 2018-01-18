@@ -172,22 +172,22 @@ export default class StandardDemo extends React.Component {
                 <div style={{ marginTop: '100px' }} />
                 <Row className={style.padRow} justify='center'>
                     <Col md={5}>
-                        <StandardInput value={this.state.textValue} onChange={(e) => this.setState({ textValue: e.target.value })} />
+                        <StandardInput fullWidth value={this.state.textValue} onChange={(e) => this.setState({ textValue: e.target.value })} />
                     </Col>
                 </Row>
                 <Row className={style.padRow} justify='center'>
                     <Col md={5}>
-                        <StandardInput label={'Input must be x or y.'} />
+                        <StandardInput fullWidth label={'Input must be x or y.'} />
                     </Col>
                 </Row>
                 <Row className={style.padRow} justify='center'>
                     <Col md={5}>
-                        <StandardInput error={'Error! You did something wrong mate.'} />
+                        <StandardInput fullWidth error={'Error! You did something wrong mate.'} />
                     </Col>
                 </Row>
                 <Row className={style.padRow} justify='center'>
                     <Col md={5}>
-                        <StandardInput readOnly value={'Reading only!'} />
+                        <StandardInput fullWidth readOnly value={'Reading only!'} />
                     </Col>
                 </Row>
                 <div style={{ marginTop: '100px' }} />
@@ -241,7 +241,7 @@ export default class StandardDemo extends React.Component {
                                 onClick={onClick}
                                 disabled={!visible}
                               >
-                                {direction === 'left' ? <ArrowLeft/> : <ArrowRight/>}
+                                {direction === 'left' ? <ArrowLeft /> : <ArrowRight />}
                               </StandardButton>
                           }
                         >

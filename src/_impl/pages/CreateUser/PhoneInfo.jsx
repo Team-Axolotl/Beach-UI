@@ -16,7 +16,7 @@ export default class PhoneInfo extends React.Component {
                     <Row className={style.padRow} justify='center'>
                         <Col md={5} xs={12} sm={10}>
                             <Translate>{'Phone Number'}</Translate>
-                            <StandardInput onChange={this.props.applyInput} data={'phoneNumber'} value={this.props.inputs['phoneNumber'] || ''} translateLabel error={this.props.errors['phoneNumber'] || ''} />
+                            <StandardInput fullWidth onChange={this.props.applyInput} data={'phoneNumber'} value={this.props.inputs['phoneNumber'] || ''} translateLabel error={this.props.errors['phoneNumber'] || ''} />
                         </Col>
                     </Row>
                 </Row>

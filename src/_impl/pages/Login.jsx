@@ -92,6 +92,7 @@ class LoginPage extends React.Component {
                                 <Row className={style.padRow}>
                                     <Col xs={12}>
                                         <StandardInput
+                                          fullWidth
                                           autoFocus
                                           error={this.state.loginError}
                                           onChange={(e) => this.setState({ username: e.target.value, passwordEnabled: false })}
@@ -102,6 +103,7 @@ class LoginPage extends React.Component {
                                 <Row className={style.padRow}>
                                     <Col xs={12}>
                                         <StandardInput
+                                          fullWidth
                                           type='password'
                                           onChange={(e) => this.setState({ password: e.target.value })}
                                           value={this.state.password}
