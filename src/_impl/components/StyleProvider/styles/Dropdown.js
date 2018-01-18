@@ -7,17 +7,28 @@ const DefaultSelect = {
         width: '100%'
     },
     select: {
-        borderRadius: 0,
+        padding: '5px 10px',
+        borderRadius: 10,
         border: '1px solid #ced4da',
-        fontSize: 15,
+        fontSize: 16,
         width: '100%',
-        height: '30px',
+        color: '#3db707',
+        backgroundColor: '#fbdd4a',
+
         '&:focus': {
-            borderColor: '#0074BB',
-            backgroundColor: '#ffffff'
+            borderColor: '#481559',
+            backgroundColor: '#fbdd4a',
+            borderRadius: 10
         },
         '&:hover': {
-            borderColor: '#0074BB'
+            borderColor: '#481559',
+            backgroundColor: '#fbdd4a',
+            borderRadius: 10
+        },
+        '&:active': {
+            borderColor: '#481559',
+            backgroundColor: '#fbdd4a',
+            borderRadius: 10
         }
     },
     selectMenu: {
@@ -30,10 +41,11 @@ const DefaultSelect = {
     icon: {
         width: '30px',
         height: '30px',
-        color: '#ffffff',
-        backgroundColor: '#4096fd',
+        color: '#481559',
+        backgroundColor: '#3db707',
         top: '1px',
-        right: '1px'
+        right: '1px',
+        borderRadius: 9
     }
 };
 
@@ -51,13 +63,20 @@ const ErrorSelect = {
         fontSize: 15,
         width: '100%',
         height: '30px',
-        borderColor: 'red',
+        borderColor: '#ff87c9',
+        borderRadius: 10,
+        color: 'red',
+        backgroundColor: '#ffd7e5',
+
         '&:focus': {
-            borderColor: 'red',
-            backgroundColor: '#ffffff'
+            borderColor: '#ff87c9',
+            backgroundColor: '#ffd7e5',
+            borderRadius: 10
         },
         '&:hover': {
-            borderColor: 'red'
+            borderColor: '#ff87c9',
+            backgroundColor: '#ffd7e5',
+            borderRadius: 10
         }
     },
     selectMenu: {
@@ -70,10 +89,11 @@ const ErrorSelect = {
     icon: {
         width: '30px',
         height: '30px',
-        color: '#ffffff',
-        backgroundColor: '#4096fd',
+        color: '#481559',
+        backgroundColor: '#ff87c9',
         top: '1px',
-        right: '1px'
+        right: '1px',
+        borderRadius: 9
     }
 };
 

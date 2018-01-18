@@ -12,26 +12,37 @@ import { FormControl } from 'material-ui/Form';
 import Translate from '_standard/components/Translate';
 
 export default class StandardDropdown extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
 
         this.calculateStyle = this.calculateStyle.bind(this);
 
-        this.calculateStyle(props);
+        this.calculateStyle(props, context);
     }
 
-    calculateStyle(propObject) {
-        let { styleType, customStyle, error } = propObject;
+    calculateStyle(propsObject, contextObject) {
+        const { styleType, customStyle, error, readOnly } = propsObject;
+        const { implementationStyle } = contextObject;
 
         let styleTypeParsed = styleType;
 
         if (error) styleTypeParsed = 'error';
 
-        let typesSwitch = {
-            'default': Default,
-            'error': ErrorStyle,
-            'custom': customStyle
-        };
+        let typesSwitch;
+
+        if (implementationStyle && implementationStyle.Dropdown) {
+            typesSwitch = {
+                'default': implementationStyle.Dropdown.Default || Default,
+                'error': implementationStyle.Dropdown.ErrorStyle || ErrorStyle,
+                'custom': customStyle
+            };
+        } else {
+            typesSwitch = {
+                'default': Default,
+                'error': ErrorStyle,
+                'custom': customStyle
+            };
+        }
 
         this.StyledDropdown = withStyles(typesSwitch[styleTypeParsed].select)(Select);
         this.StyledInput = withStyles(typesSwitch[styleTypeParsed].input)(Input);
@@ -39,9 +50,11 @@ export default class StandardDropdown extends React.Component {
         this.StyledLabel = withStyles(typesSwitch[styleTypeParsed].label)(Typography);
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.styleType !== this.props.styleType || nextProps.error !== this.props.error) {
-            this.calculateStyle(nextProps);
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (nextProps.styleType !== this.props.styleType
+        || nextProps.error !== this.props.error
+        || nextContext.implementationStyle !== this.context.implementationStyle) {
+            this.calculateStyle(nextProps, nextContext);
         }
     }
 
@@ -90,6 +103,11 @@ StandardDropdown.propTypes = {
     labelProps: PropTypes.object,
     // Whether to translate labels.
     translateLabel: PropTypes.bool
+};
+
+StandardDropdown.contextTypes = {
+    // Implementation theme styles
+    implementationStyle: PropTypes.object
 };
 
 StandardDropdown.defaultProps = {

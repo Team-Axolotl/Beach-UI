@@ -7,32 +7,47 @@ import Button from 'material-ui/Button';
 import { Default, White, Blue, Label, Link } from '_standard/styles/Button';
 
 export default class StandardButton extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
 
         this.calculateStyle = this.calculateStyle.bind(this);
 
-        this.calculateStyle(props);
+        this.calculateStyle(props, context);
     }
 
-    calculateStyle() {
-        let { styleType, customStyle } = this.props;
+    calculateStyle(propsObject, contextObject) {
+        const { styleType, customStyle } = propsObject;
+        const { implementationStyle } = contextObject;
 
-        let typesSwitch = {
-            'default': Default,
-            'white': White,
-            'blue': Blue,
-            'label': Label,
-            'link': Link,
-            'custom': customStyle
-        };
+        let typesSwitch;
+
+        if (implementationStyle && implementationStyle.Button) {
+            typesSwitch = {
+                'default': implementationStyle.Button.Default || Default,
+                'white': implementationStyle.Button.White || White,
+                'blue': implementationStyle.Button.Blue || Blue,
+                'label': implementationStyle.Button.Label || Label,
+                'link': implementationStyle.Button.Link || Link,
+                'custom': customStyle
+            };
+        } else {
+            typesSwitch = {
+                'default': Default,
+                'white': White,
+                'blue': Blue,
+                'label': Label,
+                'link': Link,
+                'custom': customStyle
+            };
+        }
 
         this.StyledButton = withStyles(typesSwitch[styleType])(Button);
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.styleType !== this.props.styleType) {
-            this.calculateStyle(nextProps);
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (nextProps.styleType !== this.props.styleType
+        || nextContext.implementationStyle !== this.context.implementationStyle) {
+            this.calculateStyle(nextProps, nextContext);
         }
     }
 
@@ -56,6 +71,11 @@ StandardButton.propTypes = {
     disableRipple: PropTypes.bool.isRequired,
     // The nodes to display inside the button. Can be a collection, string, anything...
     children: PropTypes.node.isRequired
+};
+
+StandardButton.contextTypes = {
+    // Implementation theme styles
+    implementationStyle: PropTypes.object
 };
 
 StandardButton.defaultProps = {

@@ -34,14 +34,13 @@ const theme = createMuiTheme({
     }
 });
 
+// Combines the standard app wrappers
 export default class Standard extends React.PureComponent {
     render() {
         return (
             <MuiThemeProvider theme={theme} >
                 <Provider store={dreamStore}>
-                    <Router history={browserHistory}>
-                        {this.props.children}
-                    </Router>
+                    {this.props.children}
                 </Provider>
             </MuiThemeProvider>
         );

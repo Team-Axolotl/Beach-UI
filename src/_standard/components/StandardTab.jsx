@@ -7,17 +7,40 @@ import { Tab } from 'material-ui/Tabs';
 import { Default } from '_standard/styles/Tab';
 
 export default class StandardTab extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
 
-        let { styleType, customStyle } = props;
+        this.calculateStyle = this.calculateStyle.bind(this);
 
-        let typesSwitch = {
-            'default': Default,
-            'custom': customStyle
-        };
+        this.calculateStyle(props, context);
+    }
 
-        this.StyledTab = withStyles(typesSwitch[styleType].input)(Tab);
+    calculateStyle(propsObject, contextObject) {
+        const { styleType, customStyle } = propsObject;
+        const { implementationStyle } = contextObject;
+
+        let typesSwitch;
+
+        if (implementationStyle && implementationStyle.Tab) {
+            typesSwitch = {
+                'default': implementationStyle.Tab.Default || Default,
+                'custom': customStyle
+            };
+        } else {
+            typesSwitch = {
+                'default': Default,
+                'custom': customStyle
+            };
+        }
+
+        this.StyledTab = withStyles(typesSwitch[styleType])(Tab);
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        if (nextProps.styleType !== this.props.styleType
+        || nextContext.implementationStyle !== this.context.implementationStyle) {
+            this.calculateStyle(nextProps, nextContext);
+        }
     }
 
     render() {
@@ -36,11 +59,19 @@ StandardTab.propTypes = {
     styleType: PropTypes.string.isRequired,
     // If the styling type is custom - the style as per material format.
     customStyle: PropTypes.object,
+    // Whether to hide the default material ripple.
+    disableRipple: PropTypes.bool.isRequired,
     // Tabs
     children: PropTypes.node
 };
 
+StandardTab.contextTypes = {
+    // Implementation theme styles
+    implementationStyle: PropTypes.object
+};
+
 StandardTab.defaultProps = {
     styleType: 'default',
-    customStyle: {}
+    customStyle: {},
+    disableRipple: true
 };
