@@ -1,25 +1,25 @@
 const Default = {
     root: {
-        color: '#00FF00',
-        backgroundColor: '#orange'
+        color: '#853645',
+        backgroundColor: '#f6a228'
     },
     scrollable: {
-        backgroundColor: '#00FF00'
+        backgroundColor: '#9988c9'
     },
     fixed: {
-        backgroundColor: '#00FF00'
+        backgroundColor: '#9988c9'
     },
     centered: {
-        backgroundColor: '#00FF00'
+        backgroundColor: '#9988c9'
     },
     flexContainer: {
-        backgroundColor: '#00FF00'
+        backgroundColor: '#9988c9'
     },
     scrollingContainer: {
-        backgroundColor: '#00FF00'
+        backgroundColor: '#9988c9'
     },
     buttonAuto: {
-        backgroundColor: '#00FF00'
+        backgroundColor: '#9988c9'
     }
 };
 

@@ -66,6 +66,7 @@ StandardTab.propTypes = {
 };
 
 StandardTab.contextTypes = {
+    // Implementation theme styles
     implementationStyle: PropTypes.object
 };
 

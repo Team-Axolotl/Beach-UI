@@ -102,6 +102,7 @@ StandardInput.propTypes = {
 };
 
 StandardInput.contextTypes = {
+    // Implementation theme styles
     implementationStyle: PropTypes.object
 };
 

@@ -32,7 +32,8 @@ const DefaultSelect = {
         height: '30px',
         color: '#ffffff',
         backgroundColor: '#4096fd',
-        top: '1px'
+        top: '1px',
+        right: '1px'
     }
 };
 
@@ -71,7 +72,8 @@ const ErrorSelect = {
         height: '30px',
         color: '#ffffff',
         backgroundColor: '#4096fd',
-        top: '1px'
+        top: '1px',
+        right: '1px'
     }
 };
 

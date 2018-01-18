@@ -74,6 +74,7 @@ StandardButton.propTypes = {
 };
 
 StandardButton.contextTypes = {
+    // Implementation theme styles
     implementationStyle: PropTypes.object
 };
 

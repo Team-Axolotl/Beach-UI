@@ -63,7 +63,7 @@ module.exports = {
     },
     entry: [
         'babel-polyfill',
-        './src/index.js'
+        './src/index.jsx'
     ],
     output: {
         path: path.resolve('docs'),

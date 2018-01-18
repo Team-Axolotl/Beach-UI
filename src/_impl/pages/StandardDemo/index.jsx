@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Row from '_dream/containers/Row';
 import Col from '_dream/containers/Col';
 
+import { MenuItem } from 'material-ui/Menu';
 import Typography from 'material-ui/Typography';
 
 import Delete from 'material-ui-icons/Delete';
@@ -12,6 +13,7 @@ import ArrowLeft from 'material-ui-icons/KeyboardArrowLeft';
 
 import StandardButton from '_standard/components/StandardButton';
 import StandardInput from '_standard/components/StandardInput';
+import StandardDropdown from '_standard/components/StandardDropdown';
 import StandardTabs from '_standard/components/StandardTabs';
 import StandardTab from '_standard/components/StandardTab';
 
@@ -40,10 +42,16 @@ export default class StandardDemo extends React.Component {
 
         this.state = {
             textValue: '',
+            selectedDropdownItem: undefined,
             selectedTab: 0
         };
 
+        this.handleDropdownSelect = this.handleDropdownSelect.bind(this);
         this.handleTabChange = this.handleTabChange.bind(this);
+    }
+
+    handleDropdownSelect(event) {
+        this.setState({ selectedDropdownItem: event.target.value });
     }
 
     handleTabChange(event, value) {
@@ -185,6 +193,44 @@ export default class StandardDemo extends React.Component {
                 <div style={{ marginTop: '100px' }} />
                 <Row className={style.padRow} justify='center'>
                     <Col md={5}>
+                        <StandardDropdown
+                          value={this.state.selectedDropdownItem}
+                          onChange={this.handleDropdownSelect}
+                        >
+                            <MenuItem disableRipple value={undefined}>None</MenuItem>
+                            <MenuItem disableRipple value={0}>Item 1</MenuItem>
+                            <MenuItem disableRipple value={1}>Item 2</MenuItem>
+                            <MenuItem disableRipple value={2}>Item 3</MenuItem>
+                            <MenuItem disableRipple value={3}>Item 4</MenuItem>
+                            <MenuItem disableRipple value={4}>Item 5</MenuItem>
+                            <MenuItem disableRipple value={5}>Item 6</MenuItem>
+                            <MenuItem disableRipple value={6}>Item 7</MenuItem>
+                        </StandardDropdown>
+                    </Col>
+                </Row>
+                <Row className={style.padRow} justify='center'>
+                    <Col md={5}>
+                        <StandardDropdown styleType='error'
+                          value={this.state.selectedDropdownItem}
+                          onChange={this.handleDropdownSelect}
+                        >
+                            <MenuItem disableRipple value={undefined}>None</MenuItem>
+                            <MenuItem disableRipple value={0}>Item 1</MenuItem>
+                            <MenuItem disableRipple value={1}>Item 2</MenuItem>
+                            <MenuItem disableRipple value={2}>Item 3</MenuItem>
+                            <MenuItem disableRipple value={3}>Item 4</MenuItem>
+                            <MenuItem disableRipple value={4}>Item 5</MenuItem>
+                            <MenuItem disableRipple value={5}>Item 6</MenuItem>
+                            <MenuItem disableRipple value={6}>Item 7</MenuItem>
+                            <MenuItem disableRipple value={7}>Item 8</MenuItem>
+                            <MenuItem disableRipple value={8}>Item 9</MenuItem>
+                            <MenuItem disableRipple value={9}>Item 10</MenuItem>
+                        </StandardDropdown>
+                    </Col>
+                </Row>
+                <div style={{ marginTop: '100px' }} />
+                <Row className={style.padRow} justify='center'>
+                    <Col md={5}>
                         <StandardTabs value={this.state.selectedTab}
                           onChange={this.handleTabChange}
                           scrollable
@@ -216,6 +262,7 @@ export default class StandardDemo extends React.Component {
                         {this.state.selectedTab === 6 && <Row justify='center'><Typography>Access policy</Typography></Row>}
                     </Col>
                 </Row>
+                <div style={{ marginTop: '700px' }} />
             </div>
         );
     }

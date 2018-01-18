@@ -11,7 +11,7 @@ export default class StyleProvider extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            implStyle: true
+            implStyle: false
         };
         this.toggleImplStyle = this.toggleImplStyle.bind(this);
         this.customButtonStyle = {

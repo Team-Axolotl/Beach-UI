@@ -63,6 +63,11 @@ StandardTabs.propTypes = {
     children: PropTypes.node
 };
 
+StandardTabs.contextTypes = {
+    // Implementation theme styles
+    implementationStyle: PropTypes.object
+};
+
 StandardTabs.defaultProps = {
     styleType: 'default',
     customStyle: {},
