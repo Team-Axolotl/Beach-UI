@@ -12,7 +12,7 @@ import { grey, blue } from 'material-ui/colors';
 import 'normalize.css';
 import './style.css';
 import 'react-virtualized/styles.css';
-
+import LazyLoaderComponent from 'LazyLoaderComponent';
 import Authentificator from '_impl/components/Authentificator';
 
 // Pages
@@ -62,9 +62,13 @@ ReactDOM.render(
                 <Route component={Authentificator}>
                     <Route component={Helper}>
                         <Route component={NavigationBar}>
-                        <Route path='/standard-demo' component={StandardDemo} />
-                            <Route path='/createUser' component={() => <PermissionRoute check='user.user.create'><CreateUser /></PermissionRoute>} />
-                            <Route path='/listUsers' component={() => <PermissionRoute check='user.user.fetch'><UserList /></PermissionRoute>} />
+                        <Route path='/standard-demo' component={() => <LazyLoaderComponent componentName={'standard-demo'}></LazyLoaderComponent>} />
+                            <Route path='/createUser' component={() => <PermissionRoute check='user.user.create'>
+                                                                            <LazyLoaderComponent componentName={'createUser'} />
+                                                                        </PermissionRoute>} />
+                            <Route path='/listUsers' component={() => <PermissionRoute check='user.user.fetch'>
+                                                                            <LazyLoaderComponent componentName={'listUsers'} />
+                                                                        </PermissionRoute>} />
                             <Route path='/home' component={Home} />
                         </Route>
                     </Route>

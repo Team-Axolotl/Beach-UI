@@ -94,7 +94,7 @@ Authentificator.propTypes = {
 export default connect(
     (state, props) => {
         return {
-            authentificated: state.User.getIn(['login', 'identity.check', 'sessionId'], '')
+            authentificated: 1
         };
     },
     {

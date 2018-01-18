@@ -75,7 +75,13 @@ module.exports = {
             path.resolve('./'),
             path.resolve('./node_modules'),
             path.resolve('./src')
-        ]
+        ],
+        alias: {
+            'split-listUsers': require.resolve('../src/_impl/pages/UserList/index.jsx'),
+            'split-createUser': require.resolve('../src/_impl/pages/CreateUser/index.jsx'),
+            'LazyLoaderComponent': require.resolve('../src/_impl/components/LazyLoaderComponent.jsx'),
+            'split-standard-demo': require.resolve('../src/_impl/pages/StandardDemo/index.jsx')
+        }
     },
     module: {
         loaders: [

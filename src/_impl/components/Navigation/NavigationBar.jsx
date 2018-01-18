@@ -56,9 +56,14 @@ class NavigationBar extends React.Component {
         });
     }
 
-    navigateToPage(page) {
-        this.context.router.push(page);
-        this.menuClose();
+    async navigateToPage(page) {
+        const component = await import('split-listUsers');  
+        if (component) {
+            const Component = component.default;
+            setModule(page, Component);
+            this.context.router.push(page);
+            this.menuClose();
+        }
     }
 
     logout() {
