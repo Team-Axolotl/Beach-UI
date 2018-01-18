@@ -34,15 +34,15 @@ export function setModule(name, component) {
     cache[name] = component;
 };
 
-function dynamicImport(moduleName) {
+export function dynamicImport(moduleName) {
     switch (moduleName) {
         case 'listUsers':
             return import('split-listUsers');
-        case 'createUser': 
+        case 'createUser':
             return import('split-createUser');
-        case 'standard-demo': 
+        case 'standard-demo':
             return import('split-standard-demo');
         default:
-            return Promise.reject(new Error('dynamicImport failed with name param: ' + moduleName))
+            return null;
     };
 }

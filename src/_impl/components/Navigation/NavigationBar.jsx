@@ -14,6 +14,7 @@ import IconButton from 'material-ui/IconButton';
 import Menu from 'material-ui/Menu';
 import MenuIcon from 'material-ui-icons/Menu';
 import Typography from 'material-ui/Typography';
+import { setModule, dynamicImport } from '../../dynamicImport'
 
 import { Logout } from '_impl/logic/User/actions';
 
@@ -57,13 +58,16 @@ class NavigationBar extends React.Component {
     }
 
     async navigateToPage(page) {
-        const component = await import('split-listUsers');  
+        // first char is / and need to be removed
+        const dynamicImportName = page.slice(1);
+        const component = await dynamicImport(dynamicImportName);
         if (component) {
             const Component = component.default;
-            setModule(page, Component);
-            this.context.router.push(page);
-            this.menuClose();
+            setModule(dynamicImportName, Component);
         }
+
+        this.context.router.push(page);
+        this.menuClose();
     }
 
     logout() {

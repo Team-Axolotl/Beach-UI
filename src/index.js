@@ -16,12 +16,9 @@ import LazyLoaderComponent from 'LazyLoaderComponent';
 import Authentificator from '_impl/components/Authentificator';
 
 // Pages
-import StandardDemo from '_impl/pages/StandardDemo';
 import Beach from '_impl/pages/Beach';
 import Home from '_impl/pages/Home';
 import Login from '_impl/pages/Login';
-import CreateUser from '_impl/pages/CreateUser';
-import UserList from '_impl/pages/UserList';
 
 // Helpers
 import NavigationBar from '_impl/components/Navigation/NavigationBar';
