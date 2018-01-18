@@ -1,14 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
-import { List, Map } from 'immutable';
-import { Table, AutoSizer, Column } from 'react-virtualized';
-
-import Row from '_dream/containers/Row';
-import Col from '_dream/containers/Col';
-
-import { fetchUsers } from '_impl/logic/User/actions';
+import { List } from 'immutable';
+import { Table, AutoSizer } from 'react-virtualized';
 
 import { CircularProgress } from 'material-ui';
 
