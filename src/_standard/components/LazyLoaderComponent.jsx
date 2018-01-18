@@ -10,8 +10,8 @@ export default class LazyLoaderComponent extends React.Component {
         };
     }
 
-    loadModule(moduleNmae) {
-        return getModule(moduleNmae)
+    loadModule(moduleName) {
+        return getModule(moduleName)
         .then(cacheComponent => this.setState({component: cacheComponent}))
         .catch(cacheComponent => this.setState({component: null}));
     }
