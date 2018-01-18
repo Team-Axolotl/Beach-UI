@@ -19,19 +19,22 @@ export default class StandardDropdown extends React.Component {
             'custom': customStyle
         };
 
-        this.StyledDropdown = withStyles(typesSwitch[styleType])(Select);
+        this.StyledDropdown = withStyles(typesSwitch[styleType].select)(Select);
+        this.StyledInput = withStyles(typesSwitch[styleType].input)(Input);
+        this.StyledFormControl = withStyles(typesSwitch[styleType].formControl)(FormControl);
+        this.StyledInputLabel = withStyles(typesSwitch[styleType].inputLabel)(InputLabel);
     }
 
     render() {
         let { styleType, customStyle, name, placeholder, ...other } = this.props;
 
         return (
-            <FormControl>
-                <InputLabel htmlFor={name}>{placeholder}</InputLabel>
-                <this.StyledDropdown displayEmpty {...other} input={<Input id={name} name={name} />} >
+            <this.StyledFormControl>
+                <this.StyledInputLabel htmlFor={name}>{placeholder}</this.StyledInputLabel>
+                <this.StyledDropdown displayEmpty {...other} input={<this.StyledInput id={name} name={name} />} >
                     {this.props.children}
                 </this.StyledDropdown>
-            </FormControl>
+            </this.StyledFormControl>
         );
     }
 }
