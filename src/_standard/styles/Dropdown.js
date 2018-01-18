@@ -3,7 +3,7 @@ const DefaultSelect = {
         padding: 0,
         display: 'flex',
         justifyContent: 'space-between',
-        fontSize: 14,
+        fontSize: 15,
         width: '100%'
     },
     select: {
@@ -25,7 +25,46 @@ const DefaultSelect = {
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        padding: '0 0 0 10px',
+        padding: '0 0 0 10px'
+    },
+    icon: {
+        width: '30px',
+        height: '30px',
+        color: '#ffffff',
+        backgroundColor: '#4096fd',
+        top: '1px'
+    }
+};
+
+const ErrorSelect = {
+    root: {
+        padding: 0,
+        display: 'flex',
+        justifyContent: 'space-between',
+        fontSize: 15,
+        width: '100%'
+    },
+    select: {
+        borderRadius: 0,
+        border: '1px solid #ced4da',
+        fontSize: 15,
+        width: '100%',
+        height: '30px',
+        borderColor: 'red',
+        '&:focus': {
+            borderColor: 'red',
+            backgroundColor: '#ffffff'
+        },
+        '&:hover': {
+            borderColor: 'red'
+        }
+    },
+    selectMenu: {
+        width: '100%',
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        padding: '0 0 0 10px'
     },
     icon: {
         width: '30px',
@@ -37,11 +76,7 @@ const DefaultSelect = {
 };
 
 const DefaultInput = {
-    inkbar: {
-        '&:after': {
-            display: 'none'
-        }
-    }
+
 };
 
 const DefaultFormControl = {
@@ -50,9 +85,18 @@ const DefaultFormControl = {
     }
 };
 
-const DefaultInputLabel = {
-    formControl: {
-        left: 10
+const defaultLabel = {
+    root: {
+        fontSize: '13px',
+        marginLeft: '2px'
+    }
+};
+
+const errorLabel = {
+    root: {
+        color: 'red',
+        fontSize: '13px',
+        marginLeft: '2px'
     }
 };
 
@@ -60,8 +104,14 @@ const Default = {
     select: DefaultSelect,
     input: DefaultInput,
     formControl: DefaultFormControl,
-    inputLabel: DefaultInputLabel,
+    label: defaultLabel
 };
 
+const ErrorStyle = {
+    select: ErrorSelect,
+    input: DefaultInput,
+    formControl: DefaultFormControl,
+    label: errorLabel
+};
 
-export { Default };
+export { Default, ErrorStyle };

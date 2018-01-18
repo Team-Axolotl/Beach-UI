@@ -39,7 +39,7 @@ export function setModule(name, component) {
 export function dynamicImport(moduleName) {
     switch (moduleName) {
         case 'listUsers':
-            return import('_impl/pages/UserList');
+            return import('_impl/pages/UserList.jsx');
         case 'createUser':
             return import('_impl/pages/CreateUser');
         case 'standard-demo':

@@ -19,24 +19,23 @@ export default class CustomerInfo extends React.Component {
                     <Row className={style.padRow} justify='center'>
                         <Col md={5} xs={12} sm={10}>
                             <Translate>{'First Name'}</Translate>
-                            <StandardInput onChange={this.props.applyInput} data={'firstName'} value={this.props.inputs['firstName'] || ''} translateErrors error={this.props.errors['firstName'] || ''} />
+                            <StandardInput onChange={this.props.applyInput} data={'firstName'} value={this.props.inputs['firstName'] || ''} translateLabel error={this.props.errors['firstName'] || ''} />
                         </Col>
                     </Row>
                     <Row className={style.padRow} justify='center'>
                         <Col md={5} xs={12} sm={10}>
                             <Translate>{'Last Name'}</Translate>
-                            <StandardInput onChange={this.props.applyInput} data={'lastName'} value={this.props.inputs['lastName'] || ''} translateErrors error={this.props.errors['lastName'] || ''} />
+                            <StandardInput onChange={this.props.applyInput} data={'lastName'} value={this.props.inputs['lastName'] || ''} translateLabel error={this.props.errors['lastName'] || ''} />
                         </Col>
                     </Row>
                     <Row className={style.padRow} justify='center'>
                         <Col md={5} xs={12} sm={10}>
                             <Translate>{'Sex'}</Translate>
-                            <StandardDropdown onChange={this.props.applyInputDropdown} name={'gender'} value={this.props.inputs['gender']}>
+                            <StandardDropdown onChange={this.props.applyInputDropdown} name={'gender'} translateLabel error={this.props.errors['gender'] || ''} value={this.props.inputs['gender']}>
                                     <MenuItem value='m'>{'Male'}</MenuItem>
                                     <MenuItem value='f'>{'Female'}</MenuItem>
-                            </StandardDropdown> 
-                            
-                        </Col>                        
+                            </StandardDropdown>
+                        </Col>
                     </Row>
                 </Row>
             </div>

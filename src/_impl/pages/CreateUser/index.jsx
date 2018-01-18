@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Problem from 'material-ui-icons/ReportProblem';
+import { CircularProgress } from 'material-ui';
 
 import Row from '_dream/containers/Row';
 import Col from '_dream/containers/Col';
@@ -17,6 +18,8 @@ import PhoneInfo from './PhoneInfo';
 
 import Translate from '_standard/components/Translate';
 
+import { createUser } from '_impl/logic/User/actions';
+
 class CreateUser extends React.Component {
     constructor(props) {
         super(props);
@@ -26,7 +29,8 @@ class CreateUser extends React.Component {
             tab: 0,
             validations: {},
             problematicTabs: [],
-            errors: {}
+            errors: {},
+            loading: false
         };
 
         this.state.validations = {
@@ -38,6 +42,11 @@ class CreateUser extends React.Component {
             lastName: {
                 func: (value) => { return !/[0-9]/g.test(value) && !/\s/g.test(value) && value.length <= 10 && value.length >= 3; },
                 reqs: 'Must be between 3 and 10 characters, and not contain spaces or numbers.',
+                tab: 0
+            },
+            gender: {
+                func: (value) => { return value === 'm' || value === 'f'; },
+                reqs: 'You must select a gender.',
                 tab: 0
             },
             phoneNumber: {
@@ -91,7 +100,7 @@ class CreateUser extends React.Component {
                 // Validate it using the internal function.
                 isValid = this.state.validations[requiredFields[i]].func(this.state.inputs[requiredFields[i]]);
             } else {
-                 // If the value is missing, mark it as an error.
+                // If the value is missing, mark it as an error.
                 isValid = false;
             }
             if (!isValid) {
@@ -101,7 +110,22 @@ class CreateUser extends React.Component {
             }
         }
 
-        this.setState({ errors, problematicTabs });
+        this.setState({ errors, problematicTabs, loading: Object.keys(errors).length === 0 });
+
+        if (Object.keys(errors).length === 0) {
+            this.props.createUser(
+                this.state.inputs['firstName'],
+                this.state.inputs['lastName'],
+                this.state.inputs['gender'],
+                this.state.inputs['userName'],
+                this.state.inputs['password'],
+                this.state.inputs['phoneNumber'])
+                .then((r) => {
+                    this.setState({ loading: false });
+                    this.context.router.push('/listUsers');
+                    return false;
+                }).catch((er) => { throw er; });
+        }
     }
 
     tabChange = (event, tab) => {
@@ -117,7 +141,11 @@ class CreateUser extends React.Component {
 
         return (
             <div style={{ marginTop: '50px' }}>
-                <Row justify='center'>
+                {this.state.loading ? <section style={{ position: 'absolute', top: '25%', left: '48%', zIndex: '999' }} ><CircularProgress size={100} thickness={3} color={'primary'} /></section> : null}
+                <Row justify='center' style={{
+                    filter: this.state.loading ? 'blur(3px) grayscale(100%)' : '',
+                    pointerEvents: this.state.loading ? 'none' : ''
+                }}>
                     <Col md={10} xs={12} style={{ border: '1px solid #CCCCCC' }}>
                         <StandardTabs value={this.state.tab} onChange={this.tabChange} scrollable scrollButtons='auto' textColor={'accent'}>
                             <StandardTab icon={this.state.problematicTabs.indexOf(0) === -1 ? null : <Problem />} disableRipple label={<Translate>{'Customer'}</Translate>} />
@@ -132,13 +160,17 @@ class CreateUser extends React.Component {
                         </StandardButton>
                     </Col>
                 </Row>
-            </div>
+            </div >
         );
     }
 }
 
 CreateUser.propTypes = {
-    translations: PropTypes.object
+    createUser: PropTypes.func
+};
+
+CreateUser.contextTypes = {
+    router: PropTypes.object
 };
 
 export default connect(
@@ -148,6 +180,6 @@ export default connect(
         };
     },
     {
-
+        createUser
     }
 )(CreateUser);
