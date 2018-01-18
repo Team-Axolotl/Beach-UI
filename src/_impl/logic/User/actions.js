@@ -86,20 +86,20 @@ export function createUser(firstName, lastName, gender, userName, password, phon
     };
 }
 
-export function fetchUsers() {
+export function fetchUsers(pageNumber) {
     return {
         type: Types.FETCH_USERS,
         request: 'rpc/user.user.fetch',
         body: {
             method: 'user.user.fetch',
             params: {
-                'pageSize': 111111,
-                'pageNumber': 1,
-                'breadcrumbs': [],
-                'userType': 'Staff',
-                'customSearch': {
-                    'field': 'userName',
-                    'value': ''
+                pageSize: 20,
+                pageNumber,
+                breadcrumbs: [],
+                userType: 'Staff',
+                customSearch: {
+                    field: 'userName',
+                    value: ''
                 }
             }
         }

@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { deleteCookies } from '_dream/helpers';
 
 import Row from '_dream/containers/Row';
+import Fader from '_dream/containers/FadeContainer';
 import NavigationLink from './NavigationLink';
 
 import { withStyles } from 'material-ui/styles';
@@ -13,6 +14,7 @@ import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import Menu from 'material-ui/Menu';
 import MenuIcon from 'material-ui-icons/Menu';
+import { CircularProgress } from 'material-ui';
 import Typography from 'material-ui/Typography';
 
 import { Logout } from '_impl/logic/User/actions';
@@ -20,6 +22,7 @@ import { Logout } from '_impl/logic/User/actions';
 import Translate from '_standard/components/Translate';
 import Permission from '_standard/components/Permission';
 import StandardButton from '_standard/components/StandardButton';
+import { setModule, dynamicImport } from '_standard/dynamicImport';
 
 const menuStyles = theme => ({
     paper: {
@@ -35,7 +38,8 @@ class NavigationBar extends React.Component {
         super(props);
 
         this.state = {
-            menuButtonHandle: null
+            menuButtonHandle: null,
+            loading: false
         };
 
         this.menuOpened = this.menuOpened.bind(this);
@@ -51,23 +55,33 @@ class NavigationBar extends React.Component {
     }
 
     menuClose(e) {
-        this.setState({
+        return this.setState({
             menuButtonHandle: null
         });
     }
 
-    navigateToPage(page) {
+    async navigateToPage(page) {
+        // first char is / and need to be removed
+        const dynamicImportName = page.slice(1);
+        await this.setState({loading: true});
+        await this.menuClose();
+        const component = await dynamicImport(dynamicImportName);
+        if (component) {
+            const Component = component.default;
+            setModule(dynamicImportName, Component);
+        }
+
+        await this.setState({loading: false});
         this.context.router.push(page);
-        this.menuClose();
     }
 
     logout() {
         this.props.Logout().then(() => {
             deleteCookies();
-            this.context.router.history.push('/login');
+            this.context.router.push('/login');
             return false;
         }).catch(() => {
-            this.context.router.history.push('/login');
+            this.context.router.push('/login');
         });
     }
 
@@ -110,12 +124,12 @@ class NavigationBar extends React.Component {
                                         {'Create User'}
                                     </Translate>
                                 </NavigationLink>
-                                <NavigationLink link={'/search'} onClick={this.navigateToPage}>
-                                    <Translate>
-                                        {'Search'}
-                                    </Translate>
-                                </NavigationLink>
                             </Permission>
+                            <NavigationLink link={'/standard-demo'} onClick={this.navigateToPage}>
+                                <Translate>
+                                    {'StandardDemo'}
+                                </Translate>
+                            </NavigationLink>
                         </StyledMenu>
                         <Typography type='subheading' color='inherit'>
                             <Translate>{'Hello'}</Translate>{' '}{this.props.userName}
@@ -130,7 +144,17 @@ class NavigationBar extends React.Component {
                     </Row>
                 </Toolbar>
             </AppBar>
-            {this.props.children}
+            {!this.state.loading && this.props.children}
+            <Fader visible={this.state.loading}>
+                <CircularProgress size={100} thickness={3} style={{
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0,
+                    margin: 'auto'
+                }} />
+            </Fader>
         </div>
         );
     }

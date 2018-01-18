@@ -76,17 +76,17 @@ const errorLabel = {
 
 const Default = {
     input: DefaultInput,
-    errorText: defaultLabel
+    label: defaultLabel
 };
 
 const ErrorStyle = {
     input: ErrorInput,
-    errorText: errorLabel
+    label: errorLabel
 };
 
 const ReadOnly = {
     input: ReadOnlyInput,
-    errorText: defaultLabel
+    label: defaultLabel
 };
 
 export { Default, ErrorStyle, ReadOnly };

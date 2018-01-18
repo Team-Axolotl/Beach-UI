@@ -11,11 +11,6 @@ class Translate extends React.Component {
             if (this.props.translations) {
                 // If it is, and translations are loaded - translate it.
                 translated = this.props.translations[translated.toLowerCase().trim()];
-            } else if (!this.props.noBlur) {
-                // If it is, and they aren't loaded - blur the original text. (Could be anything really.)
-                translated = (<span style={{ color: 'transparent', textShadow: '0 0 10px rgba(0, 0, 0, 0.5)' }}>{translated}</span>);
-            } else {
-                translated = '*~*~*~*';
             }
         }
 
@@ -35,13 +30,7 @@ class Translate extends React.Component {
 
 Translate.propTypes = {
     translations: PropTypes.object,
-    children: PropTypes.node,
-    // If set to true the component will not return blurred text when translations haven't loaded. This is useful when you want to guarantee the output is always a string.
-    noBlur: PropTypes.bool
-};
-
-Translate.defaultProps = {
-    noBlur: false
+    children: PropTypes.node
 };
 
 export default connect(

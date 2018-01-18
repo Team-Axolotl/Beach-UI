@@ -4,15 +4,16 @@ import PropTypes from 'prop-types';
 import Row from '_dream/containers/Row';
 import Col from '_dream/containers/Col';
 
+import Typography from 'material-ui/Typography';
+
 import Delete from 'material-ui-icons/Delete';
+import ArrowRight from 'material-ui-icons/KeyboardArrowRight';
+import ArrowLeft from 'material-ui-icons/KeyboardArrowLeft';
+
 import StandardButton from '_standard/components/StandardButton';
 import StandardInput from '_standard/components/StandardInput';
 import StandardTabs from '_standard/components/StandardTabs';
 import StandardTab from '_standard/components/StandardTab';
-
-import { TabScrollButton } from 'material-ui/Tabs';
-
-import Arrow from 'material-ui-icons/KeyboardArrowRight';
 
 import style from 'style.css';
 
@@ -188,7 +189,16 @@ export default class StandardDemo extends React.Component {
                           onChange={this.handleTabChange}
                           scrollable
                           indicatorColor='accent'
-                          TabScrollButton={({ onClick }) => <StandardButton styleType='white' onClick={onClick}><Arrow /></StandardButton>}>
+                          TabScrollButton={
+                              ({ onClick, direction, visible }) =>
+                              <StandardButton styleType='white'
+                                onClick={onClick}
+                                disabled={!visible}
+                              >
+                                {direction === 'left' ? <ArrowLeft/> : <ArrowRight/>}
+                              </StandardButton>
+                          }
+                        >
                             <StandardTab label='General info' />
                             <StandardTab label='Contact info' />
                             <StandardTab label='Assigned roles' />
@@ -197,6 +207,13 @@ export default class StandardDemo extends React.Component {
                             <StandardTab label='Business unit management' />
                             <StandardTab label='Access policy' />
                         </StandardTabs>
+                        {this.state.selectedTab === 0 && <Row justify='center'><Typography>General info</Typography></Row>}
+                        {this.state.selectedTab === 1 && <Row justify='center'><Typography>Contact info</Typography></Row>}
+                        {this.state.selectedTab === 2 && <Row justify='center'><Typography>Assigned roles</Typography></Row>}
+                        {this.state.selectedTab === 3 && <Row justify='center'><Typography>Credentials</Typography></Row>}
+                        {this.state.selectedTab === 4 && <Row justify='center'><Typography>External credentials</Typography></Row>}
+                        {this.state.selectedTab === 5 && <Row justify='center'><Typography>Business unit management</Typography></Row>}
+                        {this.state.selectedTab === 6 && <Row justify='center'><Typography>Access policy</Typography></Row>}
                     </Col>
                 </Row>
             </div>

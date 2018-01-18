@@ -1,8 +1,12 @@
 import React, { Component, Children } from 'react';
 import PropTypes from 'prop-types';
-import implementationStyle from './styles/index';
 import StandardButton from '_standard/components/StandardButton';
 
+// The styles are in Material's JSON-ish CSS and can be imported from anywhere
+import implementationStyle from './styles/index';
+
+// Allows theming with styles from the implementation
+// Note: The styles are currently held in the context
 export default class StyleProvider extends Component {
     constructor(props, context) {
         super(props, context);
@@ -16,6 +20,10 @@ export default class StyleProvider extends Component {
                 justifyContent: 'center',
                 verticalAlign: 'middle',
                 alignItems: 'center',
+
+                position: 'fixed',
+                bottom: '30px',
+                left: '30px',
 
                 borderRadius: 5,
                 border: '1px solid',
@@ -41,6 +49,7 @@ export default class StyleProvider extends Component {
     }
 
     getChildContext() {
+        // Put the imported styles in the context
         return {
             implementationStyle: this.state.implStyle ? implementationStyle : undefined
         };
