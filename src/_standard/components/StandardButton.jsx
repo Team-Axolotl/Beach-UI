@@ -45,8 +45,8 @@ export default class StandardButton extends React.Component {
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
-        if (nextProps.styleType !== this.props.styleType
-        || nextContext.implementationStyle !== this.context.implementationStyle) {
+        if (nextProps.styleType !== this.props.styleType ||
+        nextContext.implementationStyle !== this.context.implementationStyle) {
             this.calculateStyle(nextProps, nextContext);
         }
     }

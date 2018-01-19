@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { Router, browserHistory } from 'react-router';
 import dreamStore from '_dream/dreamStore.js';
 
 // Load material ui setup.

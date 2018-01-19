@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { List, Map } from 'immutable';
+import { List } from 'immutable';
 import { Column } from 'react-virtualized';
 
 import Row from '_dream/containers/Row';
@@ -19,7 +19,6 @@ class Grid extends React.Component {
         this.state = {
             cache: []
         };
-
     }
 
     componentDidMount() {
@@ -56,9 +55,12 @@ class Grid extends React.Component {
 
 Grid.propTypes = {
     data: PropTypes.instanceOf(List).isRequired,
-    pagination: PropTypes.instanceOf(Map),
     // Actions
     fetchUsers: PropTypes.func
+};
+
+Grid.contextTypes = {
+    implementationStyle: PropTypes.object
 };
 
 export default connect(

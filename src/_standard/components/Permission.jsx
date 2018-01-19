@@ -9,6 +9,7 @@ class Permission extends React.Component {
         if (this.props.permissions.indexOf('%') !== -1 || this.props.permissions.indexOf(this.props.check) !== -1) {
             return this.props.children;
         } else {
+            if (this.props.isRoute) setTimeout(() => this.context.router.push('/'), 1);
             return null;
         }
     }
@@ -17,7 +18,12 @@ class Permission extends React.Component {
 Permission.propTypes = {
     permissions: PropTypes.instanceOf(List),
     check: PropTypes.string.isRequired,
-    children: PropTypes.node
+    children: PropTypes.node,
+    isRoute: PropTypes.bool
+};
+
+Permission.contextTypes = {
+    router: PropTypes.object
 };
 
 export default connect(

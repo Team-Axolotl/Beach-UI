@@ -6,12 +6,11 @@ import { Router, Route, Redirect, browserHistory } from 'react-router';
 // Pages
 import Beach from '_impl/pages/Beach';
 import Home from '_impl/pages/Home';
-import Login from '_impl/pages/Login';
 
 // Helpers
 import NavigationBar from '_impl/components/Navigation/NavigationBar';
 import Helper from '_impl/components/PageHelper';
-import PermissionRoute from '_standard/components/PermissionRoute';
+import Permission from '_standard/components/Permission';
 import Authentificator from '_impl/components/Authentificator';
 import LazyLoaderComponent from '_standard/components/LazyLoaderComponent';
 import StyleProvider from '_impl/components/StyleProvider/StyleProvider';
@@ -27,16 +26,16 @@ export default class Impl extends React.PureComponent {
                             <Route component={Helper}>
                                 <Route component={NavigationBar}>
                                     <Route path='/standard-demo' component={() => <LazyLoaderComponent componentName={'standard-demo'} />} />
-                                    <Route path='/createUser' component={() => <PermissionRoute check='user.user.create'>
+                                    <Route path='/createUser' component={() => <Permission isRoute check='user.user.create'>
                                                                                     <LazyLoaderComponent componentName={'createUser'} />
-                                                                                </PermissionRoute>} />
-                                    <Route path='/listUsers' component={() => <PermissionRoute check='user.user.fetch'>
+                                                                                </Permission>} />
+                                    <Route path='/listUsers' component={() => <Permission isRoute check='user.user.fetch'>
                                                                                     <LazyLoaderComponent componentName={'listUsers'} />
-                                                                                </PermissionRoute>} />
+                                                                                </Permission>} />
                                     <Route path='/home' component={Home} />
                                 </Route>
                             </Route>
-                            <Route path='/login' component={Login} />
+                            <Route path='/login' component={() => <LazyLoaderComponent componentName={'login'} />} />
                             <Redirect from='/' to='/login' />
                         </Route>
                     </Router>

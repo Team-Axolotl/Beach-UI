@@ -44,7 +44,9 @@ export function dynamicImport(moduleName) {
             return import('_impl/pages/CreateUser');
         case 'standard-demo':
             return import('_impl/pages/StandardDemo');
+        case 'login':
+            return import('_impl/pages/Login');
         default:
             return null;
-    };
+    }
 };
